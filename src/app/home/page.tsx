@@ -1,7 +1,8 @@
-import React from 'react'
+import { div } from "three/tsl";
 
-export default function page() {
+export default function Page() {
   return (
-    <div>page</div>
-  )
+ <div></div>
+  
+  );
 }
