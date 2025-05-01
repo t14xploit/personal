@@ -8,7 +8,7 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
   } from "@/components/ui/sidebar";
-  import { ChevronLeft, ChevronRight, FolderCode, GitCommitHorizontal, Terminal } from "lucide-react";
+  import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
   
   const items = [
