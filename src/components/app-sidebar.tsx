@@ -9,6 +9,7 @@ import {
     SidebarMenuItem,
   } from "@/components/ui/sidebar";
   import { ChevronLeft, ChevronRight, FolderCode, GitCommitHorizontal, Terminal } from "lucide-react";
+import Link from "next/link";
   
   const items = [
     { title: "Home", url: "/" },
@@ -34,11 +35,11 @@ import {
                       asChild
                       className="hover:bg-transparent hover:text-inherit focus-visible:ring-0"
                     >
-                      <a href={item.url} className="flex items-center gap-2 justify-center">
+                      <Link href={item.url} className="flex items-center gap-2 justify-center">
                       <ChevronLeft  />
                       <span>{item.title}</span>
                                              <ChevronRight  />
-                      </a>
+                      </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
