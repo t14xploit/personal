@@ -1,0 +1,82 @@
+/* Ensure Augmented UI styles are applied */
+.terminalContainer {
+  --aug-tl: 20px;
+  --aug-br: 40px;
+  --aug-border-opacity: 0.3;
+  --aug-border-all:1px;
+  --aug-border-bg: #00f0ff;
+  --aug-inset: 6px;
+  --aug-background: #010c14; /* Darker background color */
+  background: #010c14; /* Ensuring the background is dark */
+  color: #00f0ff;
+  font-family: monospace;
+  max-width: 48rem;
+  min-height: 500px;
+  margin: 2.5rem auto;
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: 2px; /* Sharper corners */
+  box-shadow: 0 4px 14px rgba(0, 240, 255, 0.2);
+  overflow: hidden;
+  position: relative;
+  padding: 0;
+  
+  /* Apply background to the entire section */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top bar */
+.topBar {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #031421;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+}
+
+/* Dot styles for terminal's top bar */
+.dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  margin-right: 0.5rem;
+  box-shadow: 0 0 6px currentColor;
+}
+
+
+.red {
+  background-color: #ef4444;
+}
+.yellow {
+  background-color: #facc15;
+}
+.green {
+  background-color: #22c55e;
+}
+.dot {
+  border: 1px solid #0a0a0a;
+}
+
+.title {
+  margin-left: auto;
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.blink {
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Apply a background color to the content area */
+.terminalContent {
+  background-color: #010c14; /* Same dark background */
+  flex-grow: 1; /* Ensure the content area takes available space */
+  padding: 1rem; /* Padding for content */
+  overflow-y: auto;
+}

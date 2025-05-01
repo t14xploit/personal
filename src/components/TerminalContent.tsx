@@ -1,5 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
+import styles from './TerminalContent.module.css'; // Import CSS Module
+import '@/styles/augmented-ui.css'; // Augmented UI CSS is globally imported here.
 
 type TerminalLine = {
   prompt: boolean;
@@ -32,20 +34,20 @@ const lines: TerminalLine[] = [
 ];
 
 export default function TerminalContent() {
-  const [displayedLines, setDisplayedLines] = useState<TerminalLine[]>([]);
-  const [currentLine, setCurrentLine] = useState('');
-  const [lineIndex, setLineIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
+  const [displayedLines, setDisplayedLines] = useState<TerminalLine[]>([]); // Display lines
+  const [currentLine, setCurrentLine] = useState(''); // Current line being typed
+  const [lineIndex, setLineIndex] = useState(0); // Track line index
+  const [charIndex, setCharIndex] = useState(0); // Track character index
 
   useEffect(() => {
-    if (lineIndex >= lines.length) return;
+    if (lineIndex >= lines.length) return; // Stop if no more lines
 
     const fullText = lines[lineIndex].text;
     if (charIndex < fullText.length) {
       const timeout = setTimeout(() => {
         setCurrentLine((prev) => prev + fullText[charIndex]);
         setCharIndex((prev) => prev + 1);
-      }, 30); // Character typing speed
+      }, 30); // Typing speed
       return () => clearTimeout(timeout);
     } else {
       const timeout = setTimeout(() => {
@@ -53,28 +55,39 @@ export default function TerminalContent() {
         setCurrentLine('');
         setCharIndex(0);
         setLineIndex((prev) => prev + 1);
-      }, 300); // Delay before next line
+      }, 300); // Delay before moving to next line
       return () => clearTimeout(timeout);
     }
   }, [charIndex, lineIndex]);
 
   return (
-    <div className="px-4 py-4 text-sm leading-relaxed font-mono text-[#00f0ff] whitespace-pre-wrap">
-      {displayedLines.map((line, idx) => (
-        <p key={idx}>
-          {line.prompt && <span className="text-[#00ffcc]">guest@T14Xploit:~$ </span>}
-          <span className="text-[#00ffff]">{line.text}</span>
-        </p>
-      ))}
+<section className={styles.terminalContainer} data-augmented-ui="tl-clip 30px br-clip 20px both">
+{/* Terminal Top Bar */}
+      <div className={styles.topBar}>
+        <div className={`${styles.dot} ${styles.red}`}></div>
+        <div className={`${styles.dot} ${styles.yellow}`}></div>
+        <div className={`${styles.dot} ${styles.green}`}></div>
+        <span className={styles.title}>T14Xploit Terminal</span>
+      </div>
 
-      {/* Currently typing line with cursor */}
-      {lineIndex < lines.length && (
-        <p>
-          {lines[lineIndex].prompt && <span className="text-[#00ffcc]">guest@T14Xploit:~$ </span>}
-          <span className="text-[#00ffff]">{currentLine}</span>
-          <span className="blink text-[#00ffff]">|</span>
-        </p>
-      )}
-    </div>
+      {/* Terminal Content (Lines of text) */}
+      <div className={styles.terminalContent}>
+        {displayedLines.map((line, idx) => (
+          <p key={idx}>
+            {line.prompt && <span className="text-[#00ffcc]">guest@T14Xploit:~$ </span>}
+            <span className="text-[#00ffff]">{line.text}</span>
+          </p>
+        ))}
+
+        {/* Current typing line with cursor */}
+        {lineIndex < lines.length && (
+          <p>
+            {lines[lineIndex].prompt && <span className="text-[#00ffcc]">guest@T14Xploit:~$ </span>}
+            <span className="text-[#00ffff]">{currentLine}</span>
+            <span className={styles.blink}>|</span> {/* Cursor */}
+          </p>
+        )}
+      </div>
+    </section>
   );
 }
