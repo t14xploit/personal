@@ -61,7 +61,7 @@ export default function TerminalContent() {
   }, [charIndex, lineIndex]);
 
   return (
-<section className={styles.terminalContainer} data-augmented-ui="tl-clip 30px br-clip 20px both">
+<section className={styles.terminalContainer} data-augmented-ui="tl-clip  br-clip both">
 {/* Terminal Top Bar */}
       <div className={styles.topBar}>
         <div className={`${styles.dot} ${styles.red}`}></div>
