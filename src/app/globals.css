@@ -227,6 +227,7 @@ transition: box-shadow 0.3s ease-in-out;
   --aug-inlay-bg: #010c14;
   --aug-inlay-opacity: 0.5;
   background-color: #010c14; 
+  
 }
 .protocol-section {
   --aug-border-all: 1px;

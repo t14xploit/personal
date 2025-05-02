@@ -7,10 +7,10 @@ import '@/styles/augmented-ui.css'; // Augmented UI CSS is globally imported her
 export default function IdentityHeader() {
   return (
     <section
-      className="about-section inline-block w-auto p-6 font-mono text-[#00f0ff] text-sm sm:text-base shadow-lg"
-      data-augmented-ui="bl-clip tl-2-clip-x br-2-clip-x both"
+      className="about-section inline-block w-auto p-6 font-mono text-[#00f0ff] text-sm sm:text-base shadow-lg bg-[#010c14]"
+      data-augmented-ui="bl-clip tl-2-clip-x br-2-clip-x "
     >
-      <header className="mb-4 space-y-2 leading-snug font-light">
+      <header className="bg-[#010c14] mb-4 space-y-2 leading-snug font-light">
         <p>
           <span className="text-[#00f0ff] text-lg font-medium">[ALIAS]</span>{" "}
           <span className="text-sm">T14Xploit</span>
@@ -28,7 +28,7 @@ export default function IdentityHeader() {
       </header>
 
       {/* Typewriter effect with react-simple-typewriter */}
-      <p className="border-l-4 border-cyan-500 pl-4 italic text-cyan-300 text-xs opacity-90">
+      <p className="bg-[#010c14] border-l-4 border-cyan-500 pl-4 italic text-cyan-300 text-xs opacity-90">
         <Typewriter
           words={[" “  The quieter you become,  the more you can hear.  ”"]}
           loop={1} // You can change the loop count or set it to `Infinity` for infinite looping
