@@ -10,30 +10,37 @@ import {
   } from "@/components/ui/sidebar";
   import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
-  
+import '@/styles/augmented-ui.css';
+import { BsMenuButtonWideFill } from "react-icons/bs";
+ 
   const items = [
     { title: "Home", url: "/" },
     { title: "About", url: "/about" },
     { title: "Projects", url: "/projects" },
     { title: "Blog", url: "/blog" },
-    { title: "Snippets", url: "/snippets" },
     { title: "Contact", url: "/contact" },
-    { title: "Settings", url: "/settings" },
+    
   ];
   
   export function AppSidebar() {
     return (
-      <Sidebar className="sidebar-glow font-[PPSupplyMono] font-light">
+      <Sidebar className=" sidebar-glow  font-light">
         <SidebarContent>
           <SidebarGroup>
-            <SidebarGroupLabel>T1Xploit</SidebarGroupLabel>
+            <SidebarGroupLabel>T1Xploit <BsMenuButtonWideFill className="ml-3" />
+            </SidebarGroupLabel>
             <SidebarGroupContent>
-              <SidebarMenu>
+              <SidebarMenu >
                 {items.map((item) => (
-                  <SidebarMenuItem key={item.title} className="cyber-li">
+                    <SidebarMenuItem
+  key={item.title}
+  className="cyber-li  my-1"
+ 
+  data-augmented-ui="tr-clip bl-clip both"
+>
                     <SidebarMenuButton
                       asChild
-                      className="hover:bg-transparent hover:text-inherit focus-visible:ring-0"
+                      className="hover:bg-trasparent hover:text-inherit focus-visible:ring-0"
                     >
                       <Link href={item.url} className="flex items-center gap-2 justify-center">
                       <ChevronLeft  />
