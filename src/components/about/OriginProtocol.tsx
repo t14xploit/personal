@@ -1,3 +1,6 @@
+import '@/styles/augmented-ui.css'; // Augmented UI CSS is globally imported here.
+
+
 export default function OriginProtocol() {
     return (
       <section

@@ -2,12 +2,13 @@
 
 import React from "react";
 import { Typewriter } from "react-simple-typewriter";
-
+import '@/styles/augmented-ui.css'; // Augmented UI CSS is globally imported here.
+ 
 export default function IdentityHeader() {
   return (
     <section
       className="about-section inline-block w-auto p-6 font-mono text-[#00f0ff] text-sm sm:text-base shadow-lg"
-      data-augmented-ui="bl-clip tl-2-clip-x br-2-clip-x both"
+      data-augmented-ui="bl-clip tl-2-clip-x br-2-clip-x border"
     >
       <header className="mb-4 space-y-2 leading-snug font-light">
         <p>
