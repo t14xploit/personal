@@ -163,6 +163,8 @@
   --aug-border-all:1px;
   --aug-border-bg: #00f0ff;
   --aug-background: #010c14 !important;
+  border: 1px solid rgba(0, 240, 255, 0.2);
+
 }
 
 .cyber-li:hover {
@@ -218,6 +220,8 @@ body {
 transition: box-shadow 0.3s ease-in-out;
 --aug-border-opacity: 0.3;
   --aug-border-all:1px;
+  border: 1px solid rgba(0, 240, 255, 0.2);
+
 }
 .protocol-section {
   --aug-border-all: 1px;
@@ -229,5 +233,6 @@ transition: box-shadow 0.3s ease-in-out;
   0 0 40px rgba(0, 255, 255, 0.4),
   0 0 80px rgba(0, 255, 255, 0.3);
 transition: box-shadow 0.3s ease-in-out;
+border: 1px solid rgba(0, 240, 255, 0.2);
 
 }
