@@ -1,0 +1,111 @@
+/* JourneyTimeline.module.css */
+
+.container {
+    padding-top: 6rem; /* Adjust padding for top */
+    overflow-x: auto;
+  }
+  
+  .heading {
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #00f0ff;
+  }
+  
+  .footprints {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+  
+  .stepsWrapper {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .stepButton {
+    width: 100%;
+    max-width: 16rem; /* 256px for larger screens */
+    text-align: left;
+    background-color: #0f172a;
+    border: 1px solid #00f0ff;
+    color: #00f0ff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 5px rgba(0, 240, 255, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .stepButton:hover {
+    border-color: #8a00ff;
+    box-shadow: 0 0 15px #00f0ff;
+  }
+  
+  .stepTitle {
+    font-size: 1.125rem;
+    font-weight: 300;
+  }
+  
+  .stepTime {
+    font-size: 0.875rem;
+    color: #00f0ff;
+  }
+  
+  .popoverContent {
+    width: 100%;
+    max-width: 18rem; /* 288px */
+    background-color: #0f172a;
+    color: white;
+    border: 1px solid #00f0ff;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
+  
+  .stepSubtitle {
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: #00eaff;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stepDescription {
+    font-size: 0.875rem;
+    color: #d1d5db;
+  }
+  
+  .badge {
+    margin-top: 1rem;
+    border: 1px solid #00f0ff;
+    color: #00f0ff;
+  }
+  
+  @media (max-width: 640px) {
+    .heading {
+      font-size: 1.5rem;
+    }
+  
+    .stepButton {
+      padding: 1rem;
+    }
+  
+    .stepsWrapper {
+      gap: 1rem;
+    }
+  
+    .popoverContent {
+      max-width: 16rem; /* 256px on mobile */
+    }
+  
+    .footprints {
+      gap: 0.5rem;
+    }
+  }
+  
