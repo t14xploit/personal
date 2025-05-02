@@ -164,7 +164,9 @@
   --aug-border-bg: #00f0ff;
   --aug-background: #010c14 !important;
   border: 1px solid rgba(0, 240, 255, 0.2);
-
+  --aug-inlay-all: 4px;
+  --aug-inlay-bg: #010c14;
+  --aug-inlay-opacity: 0.5;
 }
 
 .cyber-li:hover {
@@ -221,12 +223,17 @@ transition: box-shadow 0.3s ease-in-out;
 --aug-border-opacity: 0.3;
   --aug-border-all:1px;
   border: 1px solid rgba(0, 240, 255, 0.2);
-
+  --aug-inlay-all: 4px;
+  --aug-inlay-bg: #010c14;
+  --aug-inlay-opacity: 0.5;
+  background-color: #010c14; 
 }
 .protocol-section {
   --aug-border-all: 1px;
   --aug-border-opacity: 0.3;
-
+  --aug-inlay-all: 4px;
+  --aug-inlay-bg: #010c14;
+  --aug-inlay-opacity: 0.5;
   --aug-inset: 8px;
   box-shadow:
   0 0 20px rgba(0, 255, 255, 0.5),
@@ -234,5 +241,5 @@ transition: box-shadow 0.3s ease-in-out;
   0 0 80px rgba(0, 255, 255, 0.3);
 transition: box-shadow 0.3s ease-in-out;
 border: 1px solid rgba(0, 240, 255, 0.2);
-
+background-color: #010c14; 
 }

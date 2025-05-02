@@ -36,7 +36,7 @@ import { BsMenuButtonWideFill } from "react-icons/bs";
   key={item.title}
   className="cyber-li  my-1"
  
-  data-augmented-ui="tr-clip bl-clip border"
+  data-augmented-ui="tr-clip bl-clip both"
 >
                     <SidebarMenuButton
                       asChild
