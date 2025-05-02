@@ -1,4 +1,3 @@
-import styles from './TerminalContent.module.css'; // Import CSS Module
 import '@/styles/augmented-ui.css';
 
 export default function OriginProtocol() {
