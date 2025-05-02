@@ -44,14 +44,8 @@
 }
 
 :root {
-  background: #031318;
-  background: linear-gradient(
-    to top,
-    rgb(0, 0, 0) 0%,     /* Blue glow at the bottom */
-    rgb(0, 1, 2) 30%,       /* Transition */
-    rgb(2, 5, 8) 70%,         /* Main dark background */
-    rgb(0, 0, 0) 100%          /* Even darker top */
-  );
+  background: #01080e;
+
   
   --foreground: #00eaff;
 
@@ -95,13 +89,8 @@
 }
 
 .dark {
-  background: #00c2ff;
-  background: linear-gradient(
-    3deg,
-    rgb(11, 57, 77) 0%,
-    rgba(10, 40, 60, 1) 40%,
-    rgba(5, 10, 15, 1) 100%
-  );
+  background: #010c14;
+
   
   --foreground: #00eaff;
 
@@ -169,8 +158,6 @@
   position: relative;
   padding: 0.75rem 1rem;
   
-  
-  
   transition: all 0.3s ease;
   --aug-tr: 15px;
   --aug-bl: 15px;
@@ -180,7 +167,6 @@
   
   --aug-background: #010c14 !important;
   --aug-inlay-bg:var(--accent);
-  augmented-ui: tl-clip br-clip both;
 }
 
 .cyber-li:hover {
@@ -212,14 +198,6 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background: linear-gradient(
-    to top,
-    rgba(0, 180, 255, 0.15) 0%,
-    rgba(5, 15, 25, 0.6) 30%,
-    rgba(5, 10, 15, 1) 70%,
-    rgba(2, 5, 10, 1) 100%
-  );
-  color: #eaffff;
 }
 
 @keyframes blink {
@@ -234,4 +212,31 @@ body {
   .cyber-li {
     --aug-background: #010c14;
   }
+}
+.about-section {
+  --aug-border-all: 1px;
+  --aug-inlay-all: 6px;
+  --aug-inset: 8px;
+  --aug-inlay-bg:#061618f8;
+  --aug-inlay-opacity: 0.2;
+  --aug-border-bottom:0.7px;
+  box-shadow:
+  0 0 20px rgba(0, 255, 255, 0.5),
+  0 0 40px rgba(0, 255, 255, 0.4),
+  0 0 80px rgba(0, 255, 255, 0.3);
+transition: box-shadow 0.3s ease-in-out;
+
+}
+.protocol-section {
+  --aug-border-all: 1px;
+  --aug-inlay-all: 6px;
+  --aug-inset: 8px;
+  --aug-inlay-bg:#061618f8;
+  --aug-inlay-opacity: 0.2;
+  box-shadow:
+  0 0 20px rgba(0, 255, 255, 0.5),
+  0 0 40px rgba(0, 255, 255, 0.4),
+  0 0 80px rgba(0, 255, 255, 0.3);
+transition: box-shadow 0.3s ease-in-out;
+
 }
