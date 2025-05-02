@@ -179,6 +179,7 @@
   --aug-border-bg: #00f0ff;
   
   --aug-background: #010c14 !important;
+  --aug-inlay-bg:var(--accent);
   augmented-ui: tl-clip br-clip both;
 }
 
