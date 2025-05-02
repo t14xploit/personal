@@ -159,14 +159,10 @@
   padding: 0.75rem 1rem;
   
   transition: all 0.3s ease;
-  --aug-tr: 15px;
-  --aug-bl: 15px;
   --aug-border-opacity: 0.3;
   --aug-border-all:1px;
   --aug-border-bg: #00f0ff;
-  
   --aug-background: #010c14 !important;
-  --aug-inlay-bg:var(--accent);
 }
 
 .cyber-li:hover {
@@ -214,18 +210,19 @@ body {
   }
 }
 .about-section {
-  --aug-border-all: 1px;
   --aug-inset: 8px;
-  --aug-border-bottom:0.7px;
   box-shadow:
   0 0 20px rgba(0, 255, 255, 0.5),
   0 0 40px rgba(0, 255, 255, 0.4),
   0 0 80px rgba(0, 255, 255, 0.3);
 transition: box-shadow 0.3s ease-in-out;
-
+--aug-border-opacity: 0.3;
+  --aug-border-all:1px;
 }
 .protocol-section {
   --aug-border-all: 1px;
+  --aug-border-opacity: 0.3;
+
   --aug-inset: 8px;
   box-shadow:
   0 0 20px rgba(0, 255, 255, 0.5),
