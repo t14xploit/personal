@@ -1,5 +1,4 @@
 import * as React from 'react';
-import 'react-vertical-timeline-component/style.min.css';
 import Timeline from '../Timeline';
 import styles from "@/components/TerminalContent.module.css";
 import Image from 'next/image'; // Import Image component from next/image
