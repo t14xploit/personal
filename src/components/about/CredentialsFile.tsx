@@ -1,20 +1,49 @@
-// components/CredentialsFile.tsx
+import * as React from 'react';
+import 'react-vertical-timeline-component/style.min.css';
+import Timeline from '../Timeline';
+import styles from "@/components/TerminalContent.module.css";
+import Image from 'next/image'; // Import Image component from next/image
+
 export default function CredentialsFile() {
-    return (
-      <section className="mt-10 px-6 py-8 bg-[#0b0f1c] border border-[#00f0ff22] rounded-lg">
-        <h2 className="text-[#00f0ff] text-lg font-mono mb-4">[CLEARANCE FILE: CERTS]</h2>
-        <ul className="text-[#9eeaf9] text-sm space-y-1 font-light">
-          <li>🎓 University of the People – BSc in Computer Science</li>
-          <li>🎓 Lexicon – Full-stack Next.js Development</li>
-          <li>🎓 Synergy University – Translation & Linguistics</li>
-          <li>🎓 Beetroot Academy – Front-End Web Development</li>
-          <li>🎓 Harbin Institute of Technology – Chinese Language Studies</li>
-          <li>✅ IBM Cybersecurity Analyst</li>
-          <li>✅ Google IT Support Specialization</li>
-          <li>✅ SAS Advanced Programmer</li>
-          <li>✅ Computer Hardware Basics</li>
-        </ul>
-      </section>
-    );
-  }
-  
+  return (
+    <div className="flex flex-col md:flex-row items-start gap-8 md:gap-16 max-w-5xl mx-auto px-4 py-12">
+      {/* Timeline (Education) */}
+      <div className="md:w-1/2 w-full">
+        <Timeline />
+      </div>
+
+      {/* Certifications */}
+      <div
+        data-augmented-ui="tr-2-round-x l-clip-y border"
+        className={styles.skillContainer}
+      >
+        <div className='font-light'>
+          <h2 className="text-2xl mb-6 text-[#00f0ff]">Certifications</h2>
+          <ul className="space-y-8 text-[#9eeaf9] text-sm">
+            {[
+              'IBM Full Stack Developer',
+              'IBM Cybersecurity Analyst',
+              'Google IT Support Specialization',
+              'SAS Advanced Programmer',
+              'Computer Hardware Basics – Cisco',
+            ].map((item, index) => (
+              <li key={index} className="relative pl-6">
+                {/* Diagonal Line with Dot (using the SVG) */}
+                <Image
+                  src="/underline.svg" // Path to your SVG in the public folder
+                  alt="diagonal line with dot"
+                  width={220} // Adjust width to fit your design
+                  height={30} // Adjust height to fit your design
+                  className="absolute left-0 top-1 z-0"
+                />
+
+                {/* Text with underline */}
+                <div className="relative z-10 border-[#00f0ff] pb-1">{item}</div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+}
