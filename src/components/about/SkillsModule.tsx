@@ -26,7 +26,7 @@ import {
 import { BsShieldShaded } from "react-icons/bs";
 import { MdOutlineSecurity } from "react-icons/md";
 import { RiNextjsLine } from "react-icons/ri";
-import styles from "@/components/TerminalContent.module.css"; // Assuming you have the styles defined here
+import styles from "@/components/TerminalContent.module.css"; 
 
 export default function SkillsModule() {
   return (
@@ -52,7 +52,7 @@ export default function SkillsModule() {
             className={styles.skillContainer}          >
             <h3 className="text-[#00eaff] text-lg mb-2">Backend / Infrastructure</h3>
             <p className="text-sm text-gray-300">
-              Node.js, Prisma, PostgreSQL, Zod, Docker, Security Awareness, Bug Bounty
+              Node.js, Prisma, PostgreSQL, Zod, Docker, Security Awareness, Better-Auth, Bug Bounty
             </p>
           </div>
 

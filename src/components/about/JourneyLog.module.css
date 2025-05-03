@@ -1,0 +1,42 @@
+.container {
+  color: #00ffcc;
+  padding: 2rem;
+  white-space: pre-wrap;
+  font-weight: lighter;
+}
+
+.intro {
+  margin-bottom: 2rem;
+  color: #00ffaa;
+  line-height: 1.6;
+}
+
+.logEntry {
+  margin-bottom: 2rem;
+}
+
+.date {
+  color: #00ffff;
+  margin-bottom: 0.25rem;
+}
+
+.title {
+  color: #00ddff;
+  margin-bottom: 0.5rem;
+}
+
+.item {
+  margin-left: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.label {
+  color: #ffaa00;
+}
+
+.thoughts {
+  margin-left: 1rem;
+  color: #ffffffcc;
+  margin-top: 0.5rem;
+}
+

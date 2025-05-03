@@ -82,7 +82,6 @@
   --aug-background: #010c14;
   background: #010c14;
   color: #00f0ff;
-  font-family: monospace;
   border: 1px solid rgba(0, 240, 255, 0.2);
   border-radius: 2px;
   box-shadow: 0 4px 14px rgba(0, 240, 255, 0.2);
@@ -111,7 +110,6 @@
   --aug-background: #010c14;
   background: #010c14;
   color: #00f0ff;
-  font-family: monospace;
   border: 1px solid rgba(0, 240, 255, 0.2);
   border-radius: 2px;
   box-shadow: 0 4px 14px rgba(0, 240, 255, 0.2);
@@ -137,7 +135,7 @@
   border-radius: 2px;
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 1rem; /* Adjusted to match rounded-xl */
-  padding: 1.5rem; /* Adjusted to match p-5 */
+  padding: 2rem; /* Adjusted to match p-5 */
   box-shadow: 0 4px 14px rgba(0, 240, 255, 0.2);
   transition: all 0.3s ease-in-out;
 }

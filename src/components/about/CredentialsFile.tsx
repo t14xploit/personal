@@ -12,12 +12,14 @@ export default function CredentialsFile() {
       </div>
 
       {/* Certifications */}
+      <div>
+      <h2 className="text-2xl mb-6 font-light">Certifications</h2>
+
       <div
-        data-augmented-ui="tr-2-round-x l-clip-y border"
+        data-augmented-ui="tr-2-round-x l-clip-y border "
         className={styles.skillContainer}
-      >
+        >
         <div className='font-light'>
-          <h2 className="text-2xl mb-6 text-[#00f0ff]">Certifications</h2>
           <ul className="space-y-8 text-[#9eeaf9] text-sm">
             {[
               'IBM Full Stack Developer',
@@ -34,7 +36,7 @@ export default function CredentialsFile() {
                   width={220} // Adjust width to fit your design
                   height={30} // Adjust height to fit your design
                   className="absolute left-0 top-1 z-0"
-                />
+                  />
 
                 {/* Text with underline */}
                 <div className="relative z-10 border-[#00f0ff] pb-1">{item}</div>
@@ -42,6 +44,7 @@ export default function CredentialsFile() {
             ))}
           </ul>
         </div>
+            </div>
       </div>
     </div>
   );
