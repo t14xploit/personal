@@ -82,6 +82,7 @@ export default function SkillsModule() {
               <FaGitAlt title="Git" size={25} />
               <FaTerminal title="Shell / CLI" size={25} />
               <FaCloud title="Cloud" size={25} />
+             < FaGithub title="Github" size={25}/>
             </OrbitingCircles>
 
             {/* Middle */}
