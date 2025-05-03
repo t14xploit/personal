@@ -41,12 +41,20 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --animate-orbit: orbit calc(var(--duration)*1s) linear infinite;
+  @keyframes orbit {
+  0% {
+    transform: rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
+    }
+  100% {
+    transform: rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg));
+    }
+  }
 }
 
 :root {
   background: #01080e;
 
-  
   --foreground: #00eaff;
 
   --card: #0a0f13;
@@ -91,7 +99,6 @@
 .dark {
   background: #010c14;
 
-  
   --foreground: #00eaff;
 
   --card: #0a0f13;
@@ -157,7 +164,7 @@
 .cyber-li {
   position: relative;
   padding: 0.75rem 1rem;
-  
+
   transition: all 0.3s ease;
   --aug-border-opacity: 0.3;
   --aug-border-all:1px;
@@ -176,7 +183,6 @@
 .cyber-li {
   transition: all 0.3s ease;
 }
-
 
 @font-face {
   font-family: 'PPSupplyMono';
@@ -227,7 +233,7 @@ transition: box-shadow 0.3s ease-in-out;
   --aug-inlay-bg: #010c14;
   --aug-inlay-opacity: 0.5;
   background-color: #010c14; 
-  
+
 }
 .protocol-section {
   --aug-border-all: 1px;

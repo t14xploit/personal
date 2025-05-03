@@ -126,3 +126,23 @@
   padding-right: 2rem;
   padding-bottom: 2rem;
 }
+.skillContainer {
+  --aug-border-opacity: 0.3;
+  --aug-border-all: 1px;
+  --aug-border-bg: #00f0ff;
+  --aug-inset: 6px;
+  --aug-background: #010c14;
+  background: #010c14;
+  color: #00f0ff;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem; /* Adjusted to match rounded-xl */
+  padding: 1.5rem; /* Adjusted to match p-5 */
+  box-shadow: 0 4px 14px rgba(0, 240, 255, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.skillContainer:hover {
+  box-shadow: 0 4px 14px rgba(0, 240, 255, 0.2);
+}
+
