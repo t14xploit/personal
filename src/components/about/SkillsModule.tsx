@@ -26,38 +26,50 @@ import {
 import { BsShieldShaded } from "react-icons/bs";
 import { MdOutlineSecurity } from "react-icons/md";
 import { RiNextjsLine } from "react-icons/ri";
+import styles from "@/components/TerminalContent.module.css"; // Assuming you have the styles defined here
 
 export default function SkillsModule() {
   return (
-    <section className="mt-10 px-6 py-8">
+    <section className="mt-10 px-6 py-8 font-light">
+     <h2 className="text-2xl">Skills</h2>
       <div className="flex flex-col lg:flex-row gap-12 items-center justify-center">
-        {/* 🪩 Holographic Cards */}
+        {/* 🪩 Holographic Cards with Augmented UI */}
         <div className="space-y-6 max-w-md w-full lg:w-1/3">
-  {/* Card 1 - Frontend */}
-  <div className="font-light backdrop-blur-sm bg-white/5 border border-[#00eaff]/25 rounded-xl p-5 shadow-lg hover:shadow-[#00eaff]/20 transition-all">
-    <h3 className=" text-lg  mb-2">Frontend / Full Stack</h3>
-    <p className="text-sm text-gray-300">
-      React, Next.js, Tailwind CSS, Bootstrap, SASS, JavaScript, TypeScript, Material UI, ShadCN, Three.js
-    </p>
-  </div>
+          {/* Card 1 - Frontend */}
+          <div
+            data-augmented-ui="bl-clip tl-2-clip-x br-2-clip-x border"
+            className={styles.skillContainer}
+          >
+            <h3 className="text-[#00eaff] text-lg mb-2">Frontend / Full Stack</h3>
+            <p className="text-sm text-gray-300">
+              React, Next.js, Tailwind CSS, Bootstrap, SASS, JavaScript, TypeScript, Material UI, ShadCN, Three.js
+            </p>
+          </div>
 
-  {/* Card 2 - Backend */}
-  <div className=" font-light backdrop-blur-sm bg-white/5 border border-[#00eaff]/25 rounded-xl p-5 shadow-lg hover:shadow-[#00eaff]/20 transition-all">
-    <h3 className=" text-lg  mb-2">Backend / Infrastructure</h3>
-    <p className="text-sm text-gray-300">
-      Node.js, Prisma, PostgreSQL, Zod, Docker, Security Awareness, Bug Bounty
-    </p>
-  </div>
+          {/* Card 2 - Backend */}
+          <div
+            data-augmented-ui="bl-clip tl-2-clip-x br-2-clip-x border"
+            className={styles.skillContainer}          >
+            <h3 className="text-[#00eaff] text-lg mb-2">Backend / Infrastructure</h3>
+            <p className="text-sm text-gray-300">
+              Node.js, Prisma, PostgreSQL, Zod, Docker, Security Awareness, Bug Bounty
+            </p>
+          </div>
 
-  {/* Card 3 - Programming / Cloud */}
-  <div className=" font-light backdrop-blur-sm bg-white/5 border border-[#00eaff]/25 rounded-xl p-5 shadow-lg hover:shadow-[#00eaff]/20 transition-all">
-    <h3 className=" text-lg  mb-2">Programming / OS / Cloud</h3>
-    <p className="text-sm  text-gray-300">
-      Python, Linux, Java, Git, CLI / Shell, Cloud Platforms
-    </p>
-  </div>
-</div>
+          {/* Card 3 - Programming / Cloud */}
+          <div
+            data-augmented-ui="bl-clip tl-2-clip-x br-2-clip-x border"
+            className={styles.skillContainer}
+                  >
+                    <div  className={styles.skillContent}>
 
+            <h3 className="text-[#00eaff] text-lg mb-2">Programming / OS / Cloud</h3>
+            <p className="text-sm text-gray-300">
+              Python, Linux, Java, Git, CLI / Shell, Cloud Platforms
+            </p>
+                    </div>
+          </div>
+        </div>
 
         {/* 🌐 Orbit Section */}
         <div className="relative h-[650px] w-full lg:w-2/3">
