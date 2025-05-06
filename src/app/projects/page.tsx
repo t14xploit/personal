@@ -171,7 +171,7 @@ const ProjectsPage = () => {
           opts={{
             align: "start",
           }}
-          className="w-[95%] mx-auto"
+          className="w-[85%] mx-auto"
         >
           <CarouselContent>
             {upcomingProjects.map((project, index) => (
