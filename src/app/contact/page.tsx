@@ -1,7 +1,8 @@
 "use client";
 
-
+import styles from "@/components/TerminalContent.module.css"; 
 import { useState, FormEvent } from 'react';
+import { FaDiscord, FaEnvelope, FaGithub } from "react-icons/fa";
 
 export default function ContactForm() {
   const [formStatus, setFormStatus] = useState<string>(''); // for feedback message
@@ -44,55 +45,67 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6">
-        <h1 className='text-center'>Contact me</h1>
+    <div className="max-w-2xl mx-auto p-6 font-light ">
+        <h1 className='text-2xl mb-4 text-center'> Contact me</h1>
       <form onSubmit={handleSubmit} method="POST" className="space-y-4">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-white">
+          <label htmlFor="name" className="block text-sm mb-2">
             Name:
           </label>
+          <div  data-augmented-ui="tl-clip  br-clip border"
+className={styles.contactInput} >
+
           <input
             type="text"
             id="name"
             name="name"
             required
+            className="w-full outline-none border-non bg-transparent focus:ring-0"
             placeholder="Enter your name"
-            className="mt-2 p-3 w-full border border-[#00f0ff] bg-[#020b12] text-[#00f0ff] rounded-md focus:outline-none focus:ring-2 focus:ring-[#00f0ff]"
-          />
+            />
+            </div>
         </div>
 
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-white">
+          <label htmlFor="email" className="block text-sm mb-2 ">
             Email:
           </label>
+          <div  data-augmented-ui="tl-clip  br-clip border"
+className={styles.contactInput} >
+
           <input
             type="email"
             id="email"
             name="email"
             required
+            className="w-full outline-none border-non bg-transparent focus:ring-0"
+
             placeholder="Enter your email"
-            className="mt-2 p-3 w-full border border-[#00f0ff] bg-[#020b12] text-[#00f0ff] rounded-md focus:outline-none focus:ring-2 focus:ring-[#00f0ff]"
           />
         </div>
-
+        </div>
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-white">
+          <label htmlFor="message" className="block text-sm mb-2">
             Message:
           </label>
+          <div  data-augmented-ui="tl-clip  br-clip border"
+className={styles.contactInput} >
+
           <textarea
+
             id="message"
             name="message"
             rows={4}
             required
             placeholder="Your message"
-            className="mt-2 p-3 w-full border border-[#00f0ff] bg-[#020b12] text-[#00f0ff] rounded-md focus:outline-none focus:ring-2 focus:ring-[#00f0ff]"
+            className="w-full outline-none border-non bg-transparent focus:ring-0"
           ></textarea>
         </div>
-
+        </div>
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full py-3 mt-4 bg-[#00f0ff] text-[#020b12] font-semibold rounded-md focus:outline-none focus:ring-2 focus:ring-[#00f0ff] disabled:bg-[#333333]"
+          className="w-full py-3 mt-4 bg-[#00f0ff] text-[#020b12] rounded-md focus:outline-none focus:ring-2 focus:ring-[#00f0ff] disabled:bg-[#333333] cursor-pointer"
         >
           {isSubmitting ? 'Sending...' : 'Send Message'}
         </button>
@@ -108,6 +121,20 @@ export default function ContactForm() {
           </p>
         )}
       </form>
+      <div className="mt-8 text-center">
+        <h2 className="text-lg font-light text-[#00f0ff] mb-2">{`> Reach me directly`}</h2>
+        <div className="flex justify-center space-x-6 text-2xl ">
+          <a href="mailto:t14xploit@gmail.com" title="Send Email">
+            <FaEnvelope className="hover:text-[#00f0ff] transition" />
+          </a>
+          <a href="https://github.com/t14xploit" target="_blank" rel="noopener noreferrer" title="GitHub">
+            <FaGithub className="hover:text-[#00f0ff] transition" />
+          </a>
+          <a href="https://discordapp.com/users/t14xploit" target="_blank" rel="noopener noreferrer" title="Discord">
+            <FaDiscord className="hover:text-[#00f0ff] transition" />
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
