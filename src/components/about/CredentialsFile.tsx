@@ -20,7 +20,7 @@ export default function CredentialsFile() {
         className={styles.skillContainer}
         >
         <div className='font-light'>
-          <ul className="space-y-8 text-[#9eeaf9] text-sm">
+          <ul className="space-y-8  text-sm">
             {[
               'IBM Full Stack Developer',
               'IBM Cybersecurity Analyst',
