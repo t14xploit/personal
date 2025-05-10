@@ -11,6 +11,8 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Link from 'next/link';
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { AlertTriangle} from "lucide-react";
 
 const smallFeatures = [
   { title: "Tic Tac Toe", description: "Classic 2-player game", url: "/tic-tac-toe" },
@@ -111,6 +113,18 @@ const ProjectsPage = () => {
   return (
     <>
       <header className="my-6 font-light">
+        <div className="w-full text-red-500">
+
+      <Alert variant="destructive" className="mb-6">
+      <AlertTriangle className="h-10 w-10 mt-1" />
+      
+        <AlertTitle className="text-red-600">Page Under Construction</AlertTitle>
+        <AlertDescription className="text-red-400">
+          This section is still being built. Expect things to shift, break, or glow unexpectedly!
+        </AlertDescription>
+      
+  </Alert>
+        </div>
         <h1 className="text-2xl text-[#00f0ff] tracking-wide mb-4">
           Projects & Experiments
         </h1>
