@@ -12,6 +12,7 @@ import {
 import Link from "next/link";
 import '@/styles/augmented-ui.css';
 import { BsMenuButtonWideFill } from "react-icons/bs";
+ import styles from './TerminalContent.module.css'; 
  
   const items = [
     { title: "Home", url: "/" },
@@ -27,14 +28,14 @@ import { BsMenuButtonWideFill } from "react-icons/bs";
       <Sidebar className=" sidebar-glow  font-light">
         <SidebarContent>
           <SidebarGroup>
-            <SidebarGroupLabel>T1Xploit <BsMenuButtonWideFill className="ml-3" />
+            <SidebarGroupLabel>T14Xploit <BsMenuButtonWideFill className="ml-3" />
             </SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu >
                 {items.map((item) => (
                     <SidebarMenuItem
   key={item.title}
-  className="cyber-li  my-1"
+  className={styles.cyber}
  
   data-augmented-ui="tr-clip bl-clip border"
 >

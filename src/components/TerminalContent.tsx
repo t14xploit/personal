@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import styles from './TerminalContent.module.css'; // Import CSS Module
-import '@/styles/augmented-ui.css'; // Augmented UI CSS is globally imported here.
+import styles from './TerminalContent.module.css'; 
+import '@/styles/augmented-ui.css'; 
 
 type TerminalLine = {
   prompt: boolean;

@@ -159,3 +159,26 @@
   width: 100%;
   padding: 0.8rem;
 }
+
+.cyber {
+  position: relative;
+  padding: 0.75rem 1rem;
+margin-top: 1rem;
+  transition: all 0.3s ease;
+  --aug-border-opacity: 0.3;
+  --aug-border-all:1px;
+  --aug-border-bg: #00f0ff;
+  --aug-background: #010c14 !important;
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  --aug-inlay-all: 4px;
+  --aug-inlay-bg: #010c14;
+  --aug-inlay-opacity: 0.5;
+}
+
+.cyber:hover {
+  --aug-background: #02141e;
+  box-shadow: 0 0 10px #00f0ff;
+}
+.cyber {
+  transition: all 0.3s ease;
+}
