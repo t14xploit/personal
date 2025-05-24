@@ -22,13 +22,7 @@
   font-size: 1rem;
 }
 
-@media (max-width: 768px) {
-  .terminalContainer {
-    width: 95%;
-    font-size: 1rem;
-    min-height: 400px;
-  }
-}
+
 
 .topBar {
   display: flex;
@@ -109,7 +103,8 @@
 }
 
 @media (max-width: 768px) {
-  .terminalContent {
+  .terminalContent, .terminalContentTemp,
+  .protocolContent {
     max-width: 100vw;
     padding: 1rem;
     font-size: 1rem;
@@ -138,7 +133,7 @@
   box-shadow: 0 4px 14px rgba(0, 240, 255, 0.2);
   padding: 0;
   display: inline-block;
-  white-space: nowrap;
+  max-width: 100vw;
 }
 
 .terminalContentTemp {
@@ -151,6 +146,8 @@
   overflow-y: auto;
   display: inline-block;
   white-space: nowrap;
+  max-width: 100dvw;
+
 }
 
 .protocolContainer {
@@ -165,7 +162,7 @@
   border-radius: 2px;
   box-shadow: 0 4px 14px rgba(0, 240, 255, 0.2);
   display: inline-block;
-}
+margin-right: 35%;}
 
 .protocolContent {
   background-color: #010c14;
@@ -189,6 +186,8 @@
   padding: 2rem; /* Adjusted to match p-5 */
   box-shadow: 0 4px 14px rgba(0, 240, 255, 0.2);
   transition: all 0.3s ease-in-out;
+  max-width: 100dvw;
+
 }
 
 .skillContainer:hover {
@@ -232,4 +231,15 @@ margin-top: 1rem;
 }
 .cyber {
   transition: all 0.3s ease;
+}
+@media (max-width: 768px) {
+  .terminalContainer {
+    width: 95%;
+    font-size: 1rem;
+    min-height: 400px;
+  }
+  .protocolContainer{
+    margin: 0;
+  }
+ 
 }

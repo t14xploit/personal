@@ -30,7 +30,7 @@ import styles from "@/components/TerminalContent.module.css";
 
 export default function SkillsModule() {
   return (
-    <section className="mt-10 px-6 py-8 font-light">
+    <section className="mt-10 py-8 font-light">
      <h2 className="text-2xl">Skills</h2>
       <div className="flex flex-col lg:flex-row gap-12 items-center justify-center">
         {/* 🪩 Holographic Cards with Augmented UI */}
@@ -72,11 +72,11 @@ export default function SkillsModule() {
         </div>
 
         {/* 🌐 Orbit Section */}
-        <div className="relative h-[650px] w-full lg:w-2/3">
+        <div className="relative h-[650px] w-[80%] lg:w-1/2">
           <div className="absolute inset-0 flex items-center justify-center">
 
             {/* Inner */}
-            <OrbitingCircles radius={140} path={true} iconSize={25}>
+            <OrbitingCircles radius={100} path={true} iconSize={25}>
               <FaPython title="Python" size={25} />
               <FaLinux title="Linux" size={25} />
               <FaGitAlt title="Git" size={25} />
@@ -86,7 +86,7 @@ export default function SkillsModule() {
             </OrbitingCircles>
 
             {/* Middle */}
-            <OrbitingCircles radius={200} path={true} reverse iconSize={30}>
+            <OrbitingCircles radius={160} path={true} reverse iconSize={30}>
               <SiNodedotjs title="Node.js" size={30} />
               <SiPrisma title="Prisma" size={30} />
               <SiPostgresql title="PostgreSQL" size={30} />
@@ -97,17 +97,17 @@ export default function SkillsModule() {
             </OrbitingCircles>
 
             {/* Outer */}
-            <OrbitingCircles radius={260} path={true} iconSize={40}>
-              <FaReact title="React" size={40} />
-              <RiNextjsLine title="Next.js" size={40} />
-              <SiTailwindcss title="Tailwind CSS" size={40} />
-              <FaHtml5 title="HTML5" size={40} />
-              <SiSass title="SASS" size={40} />
-              <SiJavascript title="JavaScript" size={40} />
-              <SiTypescript title="TypeScript" size={40} />
-              <SiMui title="Material UI" size={40} />
-              <SiRadixui title="ShadCN (Radix UI)" size={40} />
-              <SiThreedotjs title="Three.js" size={40} />
+            <OrbitingCircles radius={200} path={true} iconSize={38}>
+              <FaReact title="React" size={38} />
+              <RiNextjsLine title="Next.js" size={38} />
+              <SiTailwindcss title="Tailwind CSS" size={38} />
+              <FaHtml5 title="HTML5" size={38} />
+              <SiSass title="SASS" size={38} />
+              <SiJavascript title="JavaScript" size={38} />
+              <SiTypescript title="TypeScript" size={38} />
+              <SiMui title="Material UI" size={38} />
+              <SiRadixui title="ShadCN (Radix UI)" size={38} />
+              <SiThreedotjs title="Three.js" size={38} />
             </OrbitingCircles>
 
           </div>

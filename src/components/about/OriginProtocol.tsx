@@ -12,7 +12,7 @@ export default function OriginProtocol() {
     >
       <div className={styles.protocolContent}>
         <h2 className="text-[#00f0ff] text-lg font-mono mb-4">[ORIGIN PROTOCOL DECRYPTED]</h2>
-        <p className="text-[#9eeaf9] text-sm leading-relaxed font-light max-w-3xl">
+        <p className="text-[#9eeaf9] text-sm leading-relaxed font-light max-w-screen">
           I didn&apos;t start with code — I started with languages. Human ones. I was fascinated by how meaning moves through words, tone, and context. Then I discovered programming and realized it was just another kind of language — one built on precision, logic, and structure.
           <br />
           <br />

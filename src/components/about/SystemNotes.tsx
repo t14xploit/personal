@@ -4,7 +4,7 @@ export default function SystemNotes() {
       <div>
         <hr />
 <h2 className="font-light mt-6">{`> USER TRACE: Detailed Background Initialized`}</h2>
-<div className="mt-10 px-6 py-6  border border-[#00f0ff33] rounded-lg text-[#9eeaf9] font-light text-sm">
+<div className="mt-10 px-3 py-6  border border-[#00f0ff33] rounded-lg text-[#9eeaf9] font-light text-sm">
         <h2 className="text-[#00f0ff] text-lg font-mono mb-3">[SYSTEM NOTES]</h2>
         <ul className="space-y-2">
           <li>🧠 Debugs with precision.</li>

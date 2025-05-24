@@ -26,7 +26,7 @@ export default function IdentityHeader() {
                     </p>
                   </header>
             
-                  <p className="border-l-4 border-cyan-500 pl-4 italic text-cyan-300 text-xs opacity-90">
+                  <p className="border-l-4 border-cyan-500 italic text-cyan-300 text-xs opacity-90">
                     <Typewriter
                       words={[" “  The quieter you become,  the more you can hear.  ”"]}
                       loop={1}
