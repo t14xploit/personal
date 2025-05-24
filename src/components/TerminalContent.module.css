@@ -6,20 +6,27 @@
   --aug-border-bg: #00f0ff;
   --aug-inset: 6px;
   --aug-background: #010c14;
+
   background: #010c14;
   color: #00f0ff;
   font-family: monospace;
-  max-width: 48rem;
+  max-width: screen;
   min-height: 500px;
-  margin: 2.5rem auto;
   border: 1px solid rgba(0, 240, 255, 0.2);
   border-radius: 2px;
   box-shadow: 0 4px 14px rgba(0, 240, 255, 0.2);
   overflow: hidden;
-  position: relative;
-  padding: 0;
   display: flex;
   flex-direction: column;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .terminalContainer {
+    width: 95%;
+    font-size: 0.875rem;
+    min-height: 400px;
+  }
 }
 
 .topBar {
@@ -28,6 +35,22 @@
   padding: 0.5rem 1rem;
   background-color: #031421;
   border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .topBar {
+    padding: 0.4rem 0.75rem;
+  }
+
+  .title {
+    font-size: 0.65rem;
+  }
+
+  .dot {
+    width: 0.6rem;
+    height: 0.6rem;
+    margin-right: 0.4rem;
+  }
 }
 
 .dot {
@@ -72,7 +95,31 @@
   flex-grow: 1;
   padding: 1rem;
   overflow-y: auto;
+  overflow-x: hidden;
+  word-wrap: break-word;
+  font-size: 0.95rem;
+  -webkit-overflow-scrolling: touch;
 }
+
+.terminalContent p {
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .terminalContent {
+    padding: 0.45rem;
+    font-size: 0.75rem;
+  }
+}
+
+
+
+
+
+
+
+
 
 .terminalTemp {
   --aug-border-opacity: 0.3;

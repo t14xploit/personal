@@ -33,7 +33,7 @@ export default function RootLayout({
           <AppSidebar />
               <SidebarTrigger />
           <main className="flex justify-center mx-auto min-w-2xl"> {/* Add padding equal to sidebar width */}
-            <div className="w-full max-w-7xl"> {/* Adjust max-width as needed */}
+            <div className="w-full "> {/* Adjust max-width as needed */}
               {children}
             </div>
           </main>
