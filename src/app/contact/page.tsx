@@ -45,25 +45,26 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 font-light ">
-        <h1 className='text-2xl mb-4 text-center'> Contact me</h1>
-      <form onSubmit={handleSubmit} method="POST" className="space-y-4">
+    <div className="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8 font-light min-h-screen">
+      <h1 className='text-2xl sm:text-3xl mb-6 sm:mb-8 text-center text-[#00f0ff]'>Contact me</h1>
+      <form onSubmit={handleSubmit} method="POST" className="space-y-4 sm:space-y-6">
         <div>
-          <label htmlFor="name" className="block text-sm mb-2">
+          <label htmlFor="name" className="block text-sm sm:text-base mb-2 text-[#00f0ff]">
             Name:
           </label>
-          <div  data-augmented-ui="tl-clip  br-clip border"
-className={styles.contactInput} >
-
-          <input
-            type="text"
-            id="name"
-            name="name"
-            required
-            className="w-full outline-none border-non bg-transparent focus:ring-0"
-            placeholder="Enter your name"
+          <div
+            data-augmented-ui="tl-clip br-clip border"
+            className={`${styles.contactInput} ${styles.hoverBorder}`}
+          >
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              className="w-full outline-none border-none bg-transparent focus:ring-0 text-sm sm:text-base"
+              placeholder="Enter your name"
             />
-            </div>
+          </div>
         </div>
 
         <div>

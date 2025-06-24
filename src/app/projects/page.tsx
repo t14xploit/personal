@@ -111,24 +111,21 @@ const projects = [
 
 const ProjectsPage = () => {
   return (
-    <>
-      <header className="my-6 font-light">
-        <div className="w-full text-red-500">
-
-      <Alert variant="destructive" className="mb-6">
-      <AlertTriangle className="h-10 w-10 mt-1" />
-      
-        <AlertTitle className="text-red-600">Page Under Construction</AlertTitle>
-        <AlertDescription className="text-red-400">
-          This section is still being built. Expect things to shift, break, or glow unexpectedly!
-        </AlertDescription>
-      
-  </Alert>
+    <div className="min-h-screen py-6 sm:py-8 lg:py-12 px-2 sm:px-4 lg:px-6">
+      <header className="text-center mb-8 lg:mb-12 font-light">
+        <div className="mb-6">
+          <Alert variant="destructive" className="mb-6 max-w-md mx-auto">
+            <AlertTriangle className="h-4 w-4" />
+            <AlertTitle className="text-red-600">Page Under Construction</AlertTitle>
+            <AlertDescription className="text-red-400">
+              This section is still being built. Expect things to shift, break, or glow unexpectedly!
+            </AlertDescription>
+          </Alert>
         </div>
-        <h1 className="text-2xl text-[#00f0ff] tracking-wide mb-4">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl text-[#00f0ff] tracking-wide mb-4">
           Projects & Experiments
         </h1>
-        <p className="text-lg text-gray-300 max-w-2xl">
+        <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto px-4">
           A collection of things I&apos;ve built — from frontend interfaces to
           full-stack systems. Some are polished products, others are experiments
           in new tech or performance.
@@ -136,7 +133,7 @@ const ProjectsPage = () => {
       </header>
 
       {/* Tech Stack Tags */}
-      <div className="flex flex-wrap justify-start gap-2 mb-10">
+      <div className="flex flex-wrap justify-center sm:justify-start gap-2 mb-8 lg:mb-12 px-2">
         {[
           "React",
           "Next.js",
@@ -147,14 +144,18 @@ const ProjectsPage = () => {
           "Vite",
           "Python",
         ].map((tech) => (
-          <Badge key={tech} variant="outline" className="text-[#00f0ff]">
+          <Badge
+            key={tech}
+            variant="outline"
+            className="text-[#00f0ff] border-[#0f1f24] hover:border-[#1a3a42] hover:bg-[#00f0ff11] transition-all duration-300"
+          >
             {tech}
           </Badge>
         ))}
       </div>
 
       {/* Projects Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-light w-[95%] ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6 mb-12 lg:mb-20">
         {projects.map((project, index) => (
           <ProjectCard key={index} {...project} />
         ))}
@@ -228,7 +229,7 @@ const ProjectsPage = () => {
           <CarouselNext />
         </Carousel>
       </section>
-    </>
+    </div>
   );
 };
 

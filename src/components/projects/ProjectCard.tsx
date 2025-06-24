@@ -17,42 +17,66 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ image, title, description, te
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-<Card className="font-light max-w-xs mx-auto bg-[#020b12] border border-[#00f0ff33] shadow-xl hover:shadow-[0_0_30px_#00f0ff55] transition-shadow duration-300">
-<CardHeader className="relative">
-        <Image 
-        src={image} 
-        alt={title} 
-        width={500}
-        height={500}
-        className="w-full h-48 object-cover" />
+    <Card className="font-light max-w-xs mx-auto bg-[#020b12] border border-[#0f1f24] shadow-[0_2px_8px_rgba(0,240,255,0.05)] hover:shadow-[0_0_12px_rgba(0,240,255,0.15)] transition-all duration-300 hover:border-[#1a3a42] group">
+      <CardHeader className="relative overflow-hidden">
+        <Image
+          src={image}
+          alt={title}
+          width={500}
+          height={500}
+          className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+        />
       </CardHeader>
       <CardContent>
-        <CardTitle className="font-light mb-4">{title}</CardTitle>
+        <CardTitle className="font-light mb-4 text-[#00f0ff] group-hover:text-[#00eaff] transition-colors duration-300">
+          {title}
+        </CardTitle>
         <div className="flex flex-wrap gap-2 mb-2">
           {techStack.map((tech, index) => (
-            <Badge key={index} variant="outline" className="text-[#00f0ff]">
+            <Badge
+              key={index}
+              variant="outline"
+              className="text-[#00f0ff] border-[#0f1f24] hover:border-[#1a3a42] hover:bg-[#00f0ff11] transition-all duration-300"
+            >
               {tech}
             </Badge>
           ))}
         </div>
-        <CardDescription className="line-clamp-1">{description}</CardDescription>
+        <CardDescription className="line-clamp-1 text-gray-300 group-hover:text-gray-200 transition-colors duration-300">
+          {description}
+        </CardDescription>
       </CardContent>
       <CardFooter className="flex justify-between items-center">
-        <div className="flex gap-2">
-          <a href={githubUrl} target="_blank" rel="noopener noreferrer" title="GitHub">
-            <FaGithub className="text-[#00f0ff]" />
+        <div className="flex gap-3">
+          <a
+            href={githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="GitHub"
+            className="text-[#00f0ff] hover:text-[#00eaff] hover:scale-110 transition-all duration-300"
+          >
+            <FaGithub size={18} />
           </a>
-          <a href={liveUrl} target="_blank" rel="noopener noreferrer" title="Live Site">
-            <FaExternalLinkAlt className="text-[#00f0ff]" />
+          <a
+            href={liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Live Site"
+            className="text-[#00f0ff] hover:text-[#00eaff] hover:scale-110 transition-all duration-300"
+          >
+            <FaExternalLinkAlt size={16} />
           </a>
         </div>
-        <button onClick={() => setIsOpen(!isOpen)} className="text-[#00f0ff]">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="text-[#00f0ff] hover:text-[#00eaff] text-sm transition-colors duration-300 hover:underline"
+        >
           {isOpen ? "↑ Hide Details" : "↓ Show Details"}
         </button>
       </CardFooter>
       {isOpen && (
-        <div className="p-4 bg-[#1e1e1e]">
-          <p>{description}</p>
+        <div className="p-4 bg-[#010c14] border-t border-[#00f0ff33] animate-in slide-in-from-top-2 duration-300">
+          <p className="text-gray-300 text-sm leading-relaxed">{description}</p>
         </div>
       )}
     </Card>
