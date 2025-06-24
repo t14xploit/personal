@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import ProjectCard from "@/components/projects/ProjectCard";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -26,36 +25,31 @@ const upcomingProjects = [
   {
     title: "Threads Clone (Full Stack)",
     description:
-      "A full-stack Threads app using Next.js 14, MongoDB, Clerk, and Tailwind. Real-time updates, image uploads, authentication, and scalable architecture. Based on JS Mastery course.",
-    image: "/coming-soon-threads.png",
+      "A full-stack Threads app using Next.js 14, MongoDB, Clerk, and Tailwind. Real-time updates, image uploads, authentication, and scalable architecture.",
     techStack: ["Next.js 14", "TypeScript", "MongoDB", "Clerk", "Tailwind CSS"],
   },
   {
     title: "Price Tracker",
     description:
       "Web scraping eCommerce project with cron jobs and email alerts. Scrapes Amazon data, stores product history, and sends notifications when prices drop.",
-    image: "/coming-soon-price-tracker.png",
     techStack: ["Next.js", "BrightData", "NodeMailer", "MongoDB", "CRON"],
   },
   {
     title: "Animated Dev Portfolio",
     description:
       "A sleek, animated portfolio powered by Next.js and Framer Motion. Includes sections like Hero, Projects, Testimonials, and custom interactions.",
-    image: "/coming-soon-portfolio.png",
     techStack: ["Next.js", "Framer Motion", "Tailwind", "Sentry"],
   },
   {
     title: "GitHub Cyber Profile",
     description:
       "A futuristic GitHub profile viewer with a neon cyberpunk UI. Fetches real-time data from GitHub API to display repositories, activity, language usage, and social links.",
-    image: "/coming-soon-github.png",
     techStack: ["Next.js", "GitHub API", "Shadcn", "Cyberpunk UI", "Zod"],
   },
 ];
 
 const projects = [
     {
-      image: "/project-movieshop.png",
       title: "MovieShop",
       description:
         "E-commerce app for buying movies with role-based auth, admin dashboard, product browsing, cart system, and mock checkout. Built with Prisma, BetterAuth, Next.js, Tailwind, PostgreSQL, and Zod.",
@@ -72,7 +66,6 @@ const projects = [
       liveUrl: "https://movieshop.example.com",
     },
     {
-      image: "/project-news.png",
       title: "News Website",
       description:
         "Dynamic news platform using real-time weather and spot price APIs. Features admin/editor dashboards, role models, categories, subscriptions, CRUD system, and a modern UI.",
@@ -89,7 +82,6 @@ const projects = [
       liveUrl: "https://news.example.com",
     },
     {
-      image: "/project-weather.png",
       title: "Weather App",
       description:
         "Simple React weather app built in 2022 using OpenWeatherAPI. Enter a city and get current weather, temperature, and conditions in a clean UI.",
@@ -98,7 +90,6 @@ const projects = [
       liveUrl: "https://weather-app.example.com",
     },
     {
-      image: "/project-speech.png",
       title: "Speech Progress Tracker",
       description:
         "A colorful app for tracking speech development. Parents can log and monitor words learned by children with speech delay. Simple, visual, and easy to use.",
@@ -195,13 +186,9 @@ const ProjectsPage = () => {
                 className="md:basis-1/2 lg:basis-1/4 "
               >
                 <div className="rounded-lg border border-[#00f0ff33] p-4  shadow-xl hover:shadow-[0_0_30px_#00f0ff55] transition-shadow duration-300 h-full flex flex-col justify-between">
-                  <Image
-                    src={project.image}
-                    alt={`Preview of ${project.title}`}
-                    width={500}
-                    height={500}
-                    className="font-light rounded mb-4 w-full object-cover h-40 opacity-80"
-                  />
+                  <div className="w-full h-40 bg-gradient-to-br from-[#1a3a42] to-[#0f1f24] rounded mb-4 flex items-center justify-center opacity-80">
+                    <div className="text-[#00f0ff] text-3xl opacity-70">🚀</div>
+                  </div>
                   <div className="flex flex-col gap-2">
                     <h3 className="text-lg  font-light">
                       {project.title}

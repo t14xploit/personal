@@ -5,7 +5,7 @@ import { useState } from "react";
 import Image from "next/image";
 
 interface ProjectCardProps {
-  image: string;
+  image?: string;
   title: string;
   description: string;
   techStack: string[];
@@ -18,15 +18,24 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ image, title, description, te
 
   return (
     <Card className="font-light max-w-xs mx-auto bg-[#020b12] border border-[#0f1f24] shadow-[0_2px_8px_rgba(0,240,255,0.05)] hover:shadow-[0_0_12px_rgba(0,240,255,0.15)] transition-all duration-300 hover:border-[#1a3a42] group">
-      <CardHeader className="relative overflow-hidden">
-        <Image
-          src={image}
-          alt={title}
-          width={500}
-          height={500}
-          className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-        />
-      </CardHeader>
+      {image && (
+        <CardHeader className="relative overflow-hidden">
+          <Image
+            src={image}
+            alt={title}
+            width={500}
+            height={500}
+            className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+        </CardHeader>
+      )}
+      {!image && (
+        <CardHeader className="relative overflow-hidden">
+          <div className="w-full h-48 bg-gradient-to-br from-[#1a3a42] to-[#0f1f24] flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+            <div className="text-[#00f0ff] text-4xl opacity-50">📁</div>
+          </div>
+        </CardHeader>
+      )}
       <CardContent>
         <CardTitle className="font-light mb-4 text-[#00f0ff] group-hover:text-[#00eaff] transition-colors duration-300">
           {title}
