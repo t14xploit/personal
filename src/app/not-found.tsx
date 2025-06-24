@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { AlertTriangle } from 'lucide-react';
@@ -7,7 +5,7 @@ import { AlertTriangle } from 'lucide-react';
 export default function NotFound() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center text-center px-6 font-light bg-[#010c14]">
-      <AlertTriangle className="w-20 h-20 text-[#ff6b6b] mb-4 animate-pulse" />
+      <AlertTriangle className="w-20 h-20 text-[#ff6b6b] mb-4" />
       <h1 className="text-4xl mb-2 text-[#00f0ff] font-mono">404 - Page Not Found</h1>
       <p className="text-[#9eeaf9] mb-6 max-w-md">
         The page you are looking for doesn&apos;t exist or is under construction.

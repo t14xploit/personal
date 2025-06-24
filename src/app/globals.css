@@ -55,6 +55,17 @@
 :root {
   background: #01080e;
 
+  /* ===== AUGMENTED UI BASE VARIABLES ===== */
+  --aug-primary-color: #00f0ff;
+  --aug-primary-bg: #010c14;
+  --aug-border-opacity: 0.15;
+  --aug-border-width: 1px;
+  --aug-border-color: #1a3a42;
+  --aug-inset-size: 6px;
+  --aug-shadow-base: 0 2px 8px rgba(0, 240, 255, 0.08);
+  --aug-shadow-hover: 0 0 15px rgba(0, 240, 255, 0.25);
+  --aug-transition: all 0.3s ease-in-out;
+
   --foreground: #00eaff;
 
   --card: #0a0f13;

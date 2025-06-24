@@ -31,10 +31,14 @@ export default function RootLayout({
       >
         <SidebarProvider>
           <AppSidebar />
-          <SidebarTrigger />
-          <main className="flex justify-center mx-auto w-full px-4 sm:px-6 lg:px-8 overflow-x-hidden">
-            <div className="w-full max-w-7xl overflow-x-hidden">
-              {children}
+          <main className="flex flex-col w-full overflow-x-hidden">
+            <div className="flex items-center p-2">
+              <SidebarTrigger className="bg-[#010c14] border border-[#1a3a42] hover:border-[#00f0ff] transition-colors duration-300" />
+            </div>
+            <div className="flex justify-center mx-auto w-full px-4 sm:px-6 lg:px-8">
+              <div className="w-full max-w-7xl overflow-x-hidden">
+                {children}
+              </div>
             </div>
           </main>
         </SidebarProvider>
