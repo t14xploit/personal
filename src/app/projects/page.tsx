@@ -6,11 +6,34 @@ import { ExternalLink, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const smallFeatures = [
-  { title: "Tic Tac Toe", description: "Classic 2-player game", url: "/tic-tac-toe" },
-  { title: "Counter", description: "Simple increment/decrement", url: "/counter" },
-  { title: "Clock", description: "Live digital time display", url: "/clock" },
-  { title: "Color Picker", description: "Select and copy colors", url: "/color-picker" },
-  { title: "To-do List", description: "Basic task manager", url: "/todo" },
+  {
+    title: "Password Generator",
+    description: "Secure password generator with customizable options",
+    url: "/features/password-generator",
+    icon: "🔐",
+    skills: "React logic, Clipboard API, Form controls"
+  },
+  {
+    title: "Typing Speed Test",
+    description: "Test your typing speed and accuracy with random quotes",
+    url: "/features/typing-test",
+    icon: "⌨️",
+    skills: "Event handling, Timing logic, Game mechanics"
+  },
+  {
+    title: "World Clock",
+    description: "Display current time in multiple cities worldwide",
+    url: "/features/world-clock",
+    icon: "🌍",
+    skills: "Array mapping, Date manipulation, Component reusability"
+  },
+  {
+    title: "Cookie Consent",
+    description: "GDPR-compliant cookie consent banner",
+    url: "/features/cookie-consent",
+    icon: "🍪",
+    skills: "UI/UX design, LocalStorage, Cookie handling"
+  },
 ];
 
 const ongoingProjects = [
@@ -67,7 +90,7 @@ const projects = [
     description: "Collaborative news website with admin dashboard, real-time weather/price APIs, and modern design. Features CRUD operations for articles, authors, and categories, plus user/admin interfaces. Built with 2 other developers.",
     techStack: ["Next.js", "Prisma", "PostgreSQL", "APIs", "ShadCN"],
     githubUrl: "https://github.com/t14xploit/news-website",
-    videoUrl: "/Recording 2025-08-02 162447.gif",
+    videoUrl: "/Recording 2025-08-02 162429.mp4",
     type: "video"
   },
   {
