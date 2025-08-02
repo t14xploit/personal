@@ -13,6 +13,38 @@ const smallFeatures = [
   { title: "To-do List", description: "Basic task manager", url: "/todo" },
 ];
 
+const ongoingProjects = [
+  {
+    title: "Discovery 5",
+    description: "Collaborative app for developers to share their favorite dev tools. Complete rewrite of ShadCN components to fit custom styling. Working with rootv89 as main contributor.",
+    techStack: ["Next.js", "ShadCN", "Drizzle", "Better Auth"],
+    githubUrl: "https://github.com/rootv890/project-discovery5",
+    status: "In Development",
+    icon: "🔍"
+  },
+  {
+    title: "Restaurant Food Delivery App",
+    description: "Complete React Next.js & Tailwind tutorial project covering responsive design, cart functionality, authentication, and e-commerce features with automatic image sliders.",
+    techStack: ["Next.js", "TypeScript", "Tailwind", "React"],
+    status: "Tutorial Project",
+    icon: "🍕"
+  },
+  {
+    title: "Social X App",
+    description: "Full-stack social media app with real-time notifications using Socket.io. Features infinite scrolling, React Query, Prisma ORM, MySQL, and advanced authentication with Clerk.",
+    techStack: ["Next.js 15", "MySQL", "Prisma", "Socket.io", "Clerk", "React Query"],
+    status: "Learning Project",
+    icon: "📱"
+  },
+  {
+    title: "Hospital Management System",
+    description: "ASP.NET hospital management system using N-Tier Architecture, Entity Framework, Identity management, role-based access, and data seeding for roles and admin users.",
+    techStack: ["ASP.NET", "Entity Framework", "SQL Server", "Identity"],
+    status: "In Development",
+    icon: "🏥"
+  },
+];
+
 const projects = [
   {
     title: "TinyTalker",
@@ -162,6 +194,62 @@ const ProjectsPage = () => {
           </div>
         ))}
       </div>
+
+      {/* Ongoing Projects */}
+      <section className="my-20">
+        <h2 className="text-2xl font-light mb-6 tracking-wide text-[#00f0ff]">
+          Currently Working On
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {ongoingProjects.map((project, index) => (
+            <div key={index} className="bg-[#020b12] border border-[#0f1f24] rounded-lg p-6 shadow-[0_2px_8px_rgba(0,240,255,0.05)] hover:shadow-[0_0_12px_rgba(0,240,255,0.15)] transition-all duration-300 hover:border-[#1a3a42]">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="text-3xl">{project.icon}</div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-2">
+                    <h3 className="text-lg font-light text-[#00f0ff]">{project.title}</h3>
+                    <Badge
+                      variant="outline"
+                      className="text-xs text-orange-400 border-orange-400/30 bg-orange-400/10"
+                    >
+                      {project.status}
+                    </Badge>
+                  </div>
+                  <p className="text-gray-300 text-sm mb-4 leading-relaxed">{project.description}</p>
+
+                  {/* Tech Stack */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.techStack.map((tech, i) => (
+                      <Badge
+                        key={i}
+                        variant="outline"
+                        className="text-xs text-[#00f0ff] border-[#0f1f24] hover:border-[#1a3a42] hover:bg-[#00f0ff11] transition-all duration-300"
+                      >
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+
+                  {/* GitHub Link (if available) */}
+                  {project.githubUrl && (
+                    <Button
+                      asChild
+                      variant="outline"
+                      size="sm"
+                      className="border-[#1a3a42] text-[#00f0ff] hover:border-[#00f0ff] hover:bg-[#00f0ff11] transition-all duration-300"
+                    >
+                      <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                        <Github className="w-4 h-4 mr-2" />
+                        View Code
+                      </Link>
+                    </Button>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* Small Features & Experiments */}
       <section className="my-20">
