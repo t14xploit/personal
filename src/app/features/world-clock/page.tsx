@@ -1,3 +1,4 @@
+import DigitalClock from "@/components/features/digital-clock";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 
@@ -34,6 +35,9 @@ export default function WorldClockPage() {
             <p>• Component reusability and clean architecture</p>
           </div>
         </div>
+      </div>
+      <div>
+        <DigitalClock />
       </div>
     </div>
   );
