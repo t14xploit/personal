@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
+import PasswordGenerator from "@/components/features/password-generator";
 
 export default function PasswordGeneratorPage() {
   return (
@@ -19,19 +20,27 @@ export default function PasswordGeneratorPage() {
           </div>
         </div>
 
-        {/* Placeholder Content */}
-        <div className="bg-[#020b12] border border-[#0f1f24] rounded-lg p-8 text-center">
-          <div className="text-6xl mb-6">🔐</div>
-          <h2 className="text-xl font-light text-[#00f0ff] mb-4">Secure Password Generator</h2>
-          <p className="text-gray-300 mb-6">
-            This feature will generate secure passwords with customizable length, character sets, and complexity options. 
-            Users can copy passwords to clipboard and see real-time strength indicators.
-          </p>
-          <div className="text-sm text-gray-400">
-            <p className="mb-2"><strong>Skills demonstrated:</strong></p>
-            <p>• React state management and form controls</p>
-            <p>• Clipboard API for seamless copy functionality</p>
-            <p>• Security best practices and password strength validation</p>
+        {/* Password Generator Component */}
+        <div className="mb-8">
+          <PasswordGenerator />
+        </div>
+
+        {/* Skills Info */}
+        <div className="bg-[#020b12] border border-[#0f1f24] rounded-lg p-6">
+          <h3 className="text-lg font-light text-[#00f0ff] mb-4">Skills Demonstrated</h3>
+          <div className="grid md:grid-cols-3 gap-4 text-sm text-gray-300">
+            <div>
+              <h4 className="text-[#00f0ff] mb-2">React Logic</h4>
+              <p>State management, form handling, and conditional rendering for dynamic user interactions.</p>
+            </div>
+            <div>
+              <h4 className="text-[#00f0ff] mb-2">Clipboard API</h4>
+              <p>Modern browser API integration for seamless copy-to-clipboard functionality.</p>
+            </div>
+            <div>
+              <h4 className="text-[#00f0ff] mb-2">Form Controls</h4>
+              <p>Custom toggles, sliders, and validation with real-time password strength analysis.</p>
+            </div>
           </div>
         </div>
       </div>
