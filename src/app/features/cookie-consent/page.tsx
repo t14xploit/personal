@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
+import { CookieConsentDialog } from "./_components/cookie-consent-dialog";
 
 export default function CookieConsentPage() {
   return (
@@ -18,6 +19,7 @@ export default function CookieConsentPage() {
             <Badge variant="outline" className="text-[#00f0ff] border-[#0f1f24]">Cookie Handling</Badge>
           </div>
         </div>
+        <CookieConsentDialog />
 
         {/* Placeholder Content */}
         <div className="bg-[#020b12] border border-[#0f1f24] rounded-lg p-8 text-center">
