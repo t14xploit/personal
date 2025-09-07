@@ -102,7 +102,7 @@ export function CookieConsentDialog() {
 
   return (
     <Dialog open={isOpen} onOpenChange={() => {}}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-white border border-gray-200 text-gray-900">
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-white border border-gray-200 text-gray-900 rounded-lg shadow-lg [&>*]:!bg-white [&>*]:!text-gray-900 [&>*]:!border-gray-200">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2 text-gray-900">
             <Cookie className="h-5 w-5" />

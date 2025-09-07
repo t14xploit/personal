@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { RotateCcw } from "lucide-react";
 import Link from "next/link";
+import { CookieSettingsButton } from "../cookie-consent/_components/cookie-settings-button";
 
 const quotes = [
   "The quick brown fox jumps over the lazy dog.",
@@ -221,7 +222,7 @@ export default function TypingTestPage() {
         </div>
 
         {/* Skills Info */}
-        <div className="bg-[#020b12] border border-[#0f1f24] rounded-lg p-4 sm:p-6">
+        <div className="bg-[#020b12] border border-[#0f1f24] rounded-lg p-4 sm:p-6 mb-6">
           <h3 className="text-base sm:text-lg font-light text-[#00f0ff] mb-4">Skills Demonstrated</h3>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs sm:text-sm text-gray-300">
             <div>
@@ -237,6 +238,11 @@ export default function TypingTestPage() {
               <p>Score tracking, accuracy measurement, and interactive feedback systems.</p>
             </div>
           </div>
+        </div>
+
+        {/* Footer with Cookie Settings */}
+        <div className="flex justify-center">
+          <CookieSettingsButton />
         </div>
       </div>
     </div>
