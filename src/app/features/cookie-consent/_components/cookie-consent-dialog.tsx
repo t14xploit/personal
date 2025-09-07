@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Cookies from "js-cookie"
+import Cookies from "js-cookie";
 import { Button } from "@/components/ui/button"
 import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
