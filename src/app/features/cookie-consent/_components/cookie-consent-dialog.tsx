@@ -102,15 +102,15 @@ export function CookieConsentDialog() {
 
   return (
     <Dialog open={isOpen} onOpenChange={() => {}}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-white border border-gray-200 text-gray-900">
         <DialogHeader>
-          <DialogTitle className="flex items-center gap-2">
+          <DialogTitle className="flex items-center gap-2 text-gray-900">
             <Cookie className="h-5 w-5" />
-            Vi använder cookies
+            Cookie Settings
           </DialogTitle>
-          <DialogDescription>
-            Vi använder cookies för att förbättra din upplevelse på vår webbplats. 
-            Välj vilka typer av cookies du vill acceptera.
+          <DialogDescription className="text-gray-600">
+            We use cookies to enhance your browsing experience and analyze our traffic.
+            Choose which types of cookies you want to accept.
           </DialogDescription>
         </DialogHeader>
 
@@ -118,25 +118,25 @@ export function CookieConsentDialog() {
           {!showDetails ? (
             // Simple view
             <div className="space-y-4">
-              <p className="text-sm text-muted-foreground">
-                Vi respekterar din integritet. Du kan välja att acceptera alla cookies, 
-                endast nödvändiga cookies, eller anpassa dina inställningar.
+              <p className="text-sm text-gray-700 leading-relaxed">
+                We respect your privacy. You can choose to accept all cookies,
+                only necessary cookies, or customize your settings.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button onClick={acceptAll} className="flex-1">
-                  Acceptera alla cookies
+                <Button onClick={acceptAll} className="flex-1 bg-gray-900 text-white hover:bg-gray-800 font-medium">
+                  Accept All Cookies
                 </Button>
-                <Button onClick={acceptNecessary} variant="outline" className="flex-1">
-                  Endast nödvändiga cookies
+                <Button onClick={acceptNecessary} variant="outline" className="flex-1 border-gray-300 text-gray-700 hover:bg-gray-50 font-medium">
+                  Necessary Only
                 </Button>
                 <Button
                   onClick={() => setShowDetails(true)}
-                  variant="ghost"
-                  className="flex-1"
+                  variant="outline"
+                  className="flex-1 border-gray-300 text-gray-700 hover:bg-gray-50 font-medium"
                 >
                   <Settings className="h-4 w-4 mr-2" />
-                  Anpassa inställningar
+                  Customize Settings
                 </Button>
               </div>
             </div>
@@ -145,100 +145,104 @@ export function CookieConsentDialog() {
             <div className="space-y-4">
               <div className="grid gap-4">
                 {/* Necessary Cookies */}
-                <Card>
+                <Card className="bg-white border border-gray-200">
                   <CardHeader className="pb-3">
-                    <CardTitle className="flex items-center gap-2 text-base">
+                    <CardTitle className="flex items-center gap-2 text-base text-gray-900 font-semibold">
                       <Shield className="h-4 w-4" />
-                      Nödvändiga cookies
+                      Necessary Cookies
                     </CardTitle>
-                    <CardDescription>
-                      Dessa cookies är nödvändiga för att webbplatsen ska fungera korrekt
+                    <CardDescription className="text-gray-600">
+                      These cookies are required for the website to function properly
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="flex items-center justify-between">
-                      <Label htmlFor="necessary" className="text-sm">
-                        Alltid aktiverade
+                      <Label htmlFor="necessary" className="text-sm text-gray-700">
+                        Always enabled
                       </Label>
                       <Switch
                         id="necessary"
                         checked={true}
                         disabled
+                        className="data-[state=checked]:bg-gray-900"
                       />
                     </div>
                   </CardContent>
                 </Card>
 
                 {/* Analytics Cookies */}
-                <Card>
+                <Card className="bg-white border border-gray-200">
                   <CardHeader className="pb-3">
-                    <CardTitle className="flex items-center gap-2 text-base">
+                    <CardTitle className="flex items-center gap-2 text-base text-gray-900 font-semibold">
                       <BarChart3 className="h-4 w-4" />
-                      Analytiska cookies
+                      Analytics Cookies
                     </CardTitle>
-                    <CardDescription>
-                      Hjälper oss förstå hur besökare använder webbplatsen
+                    <CardDescription className="text-gray-600">
+                      Help us understand how visitors interact with our website
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="flex items-center justify-between">
-                      <Label htmlFor="analytics" className="text-sm">
-                        Tillåt analytiska cookies
+                      <Label htmlFor="analytics" className="text-sm text-gray-700">
+                        Allow analytics cookies
                       </Label>
                       <Switch
                         id="analytics"
                         checked={preferences.analytics}
                         onCheckedChange={(checked) => updatePreference("analytics", checked)}
+                        className="data-[state=checked]:bg-gray-900"
                       />
                     </div>
                   </CardContent>
                 </Card>
 
                 {/* Marketing Cookies */}
-                <Card>
+                <Card className="bg-white border border-gray-200">
                   <CardHeader className="pb-3">
-                    <CardTitle className="flex items-center gap-2 text-base">
+                    <CardTitle className="flex items-center gap-2 text-base text-gray-900 font-semibold">
                       <Target className="h-4 w-4" />
-                      Marknadsföringscookies
+                      Marketing Cookies
                     </CardTitle>
-                    <CardDescription>
-                      Används för att visa relevanta annonser och mäta kampanjeffektivitet
+                    <CardDescription className="text-gray-600">
+                      Used to deliver personalized advertisements and measure campaign effectiveness
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="flex items-center justify-between">
-                      <Label htmlFor="marketing" className="text-sm">
-                        Tillåt marknadsföringscookies
+                      <Label htmlFor="marketing" className="text-sm text-gray-700">
+                        Allow marketing cookies
                       </Label>
                       <Switch
                         id="marketing"
                         checked={preferences.marketing}
                         onCheckedChange={(checked) => updatePreference("marketing", checked)}
+                        className="data-[state=checked]:bg-gray-900"
                       />
                     </div>
                   </CardContent>
                 </Card>
 
                 {/* Preference Cookies */}
-                <Card>
+                <Card className="bg-white border border-gray-200">
                   <CardHeader className="pb-3">
-                    <CardTitle className="flex items-center gap-2 text-base">
+                    <CardTitle className="flex items-center gap-2 text-base text-gray-900 font-semibold">
                       <Settings className="h-4 w-4" />
-                      Inställningscookies
+                      Preference Cookies
                     </CardTitle>
-                    <CardDescription>
-                      Sparar dina preferenser och inställningar
+                    <CardDescription className="text-gray-600">
+                      Remember your preferences and settings
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="flex items-center justify-between">
-                      <Label htmlFor="preferences" className="text-sm">
-                        Tillåt inställningscookies
+                      <Label htmlFor="preferences" className="text-sm text-gray-700">
+                        Allow preference cookies
                       </Label>
                       <Switch
                         id="preferences"
                         checked={preferences.preferences}
                         onCheckedChange={(checked) => updatePreference("preferences", checked)}
+                        className="data-[state=checked]:bg-gray-900"
                       />
                     </div>
                   </CardContent>
@@ -248,26 +252,26 @@ export function CookieConsentDialog() {
               <Separator />
 
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button onClick={saveCustomPreferences} className="flex-1">
-                  Spara mina inställningar
+                <Button onClick={saveCustomPreferences} className="flex-1 bg-gray-900 text-white hover:bg-gray-800 font-medium">
+                  Save My Settings
                 </Button>
-                <Button onClick={acceptAll} variant="outline" className="flex-1">
-                  Acceptera alla cookies
+                <Button onClick={acceptAll} variant="outline" className="flex-1 border-gray-300 text-gray-700 hover:bg-gray-50 font-medium">
+                  Accept All Cookies
                 </Button>
                 <Button
                   onClick={() => setShowDetails(false)}
-                  variant="ghost"
-                  className="flex-1"
+                  variant="outline"
+                  className="flex-1 border-gray-300 text-gray-700 hover:bg-gray-50 font-medium"
                 >
-                  Tillbaka till enkel vy
+                  Back to Simple View
                 </Button>
               </div>
             </div>
           )}
         </div>
 
-        <DialogFooter className="text-xs text-muted-foreground">
-          Du kan när som helst ändra dina cookie-inställningar i sidfoten.
+        <DialogFooter className="text-xs text-gray-500">
+          You can change your cookie settings at any time in the footer.
         </DialogFooter>
       </DialogContent>
     </Dialog>

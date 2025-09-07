@@ -138,11 +138,11 @@ const ProjectsPage = () => {
       </div>
 
       {/* Projects Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12 lg:mb-20">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-12 lg:mb-20">
         {projects.map((project, index) => (
           <div key={index} className="bg-[#020b12] border border-[#0f1f24] rounded-lg overflow-hidden shadow-[0_2px_8px_rgba(0,240,255,0.05)] hover:shadow-[0_0_12px_rgba(0,240,255,0.15)] transition-all duration-300 hover:border-[#1a3a42]">
             {/* Project Preview */}
-            <div className="h-64 bg-[#010c14] border-b border-[#0f1f24] relative overflow-hidden">
+            <div className="h-48 sm:h-56 md:h-64 bg-[#010c14] border-b border-[#0f1f24] relative overflow-hidden">
               {project.type === "live" && (
                 <iframe
                   src={project.liveUrl}
@@ -169,12 +169,12 @@ const ProjectsPage = () => {
             </div>
 
             {/* Project Info */}
-            <div className="p-6">
-              <h3 className="text-xl font-light text-[#00f0ff] mb-3">{project.title}</h3>
-              <p className="text-gray-300 text-sm mb-4 leading-relaxed">{project.description}</p>
+            <div className="p-4 sm:p-6">
+              <h3 className="text-lg sm:text-xl font-light text-[#00f0ff] mb-2 sm:mb-3">{project.title}</h3>
+              <p className="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">{project.description}</p>
 
               {/* Tech Stack */}
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
                 {project.techStack.map((tech, i) => (
                   <Badge
                     key={i}
@@ -187,15 +187,15 @@ const ProjectsPage = () => {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex gap-3">
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
                 <Button
                   asChild
                   variant="outline"
                   size="sm"
-                  className="border-[#1a3a42] text-[#00f0ff] hover:border-[#00f0ff] hover:bg-[#00f0ff11] transition-all duration-300"
+                  className="border-[#1a3a42] text-[#00f0ff] hover:border-[#00f0ff] hover:bg-[#00f0ff11] transition-all duration-300 text-xs sm:text-sm"
                 >
                   <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                    <Github className="w-4 h-4 mr-2" />
+                    <Github className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                     Code
                   </Link>
                 </Button>
@@ -204,10 +204,10 @@ const ProjectsPage = () => {
                     asChild
                     variant="outline"
                     size="sm"
-                    className="border-[#1a3a42] text-[#00f0ff] hover:border-[#00f0ff] hover:bg-[#00f0ff11] transition-all duration-300"
+                    className="border-[#1a3a42] text-[#00f0ff] hover:border-[#00f0ff] hover:bg-[#00f0ff11] transition-all duration-300 text-xs sm:text-sm"
                   >
                     <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="w-4 h-4 mr-2" />
+                      <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                       Live Demo
                     </Link>
                   </Button>
