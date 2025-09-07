@@ -1,20 +1,74 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { CookieConsentDialog } from "./_components/cookie-consent-dialog";
 import { CookieSettingsButton } from "./_components/cookie-settings-button";
 
+// Cookie utility functions
+const setCookie = (name: string, value: string, days: number = 365) => {
+  const expires = new Date();
+  expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+
+  // Set cookie with proper attributes for production
+  const cookieString = `${name}=${value}; expires=${expires.toUTCString()}; path=/; SameSite=Lax${
+    window.location.protocol === 'https:' ? '; Secure' : ''
+  }`;
+
+  document.cookie = cookieString;
+  console.log(`Cookie set: ${cookieString}`);
+};
+
+const getCookie = (name: string): string | null => {
+  const nameEQ = name + "=";
+  const ca = document.cookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
+};
+
 export default function CookieConsentPage() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [currentCookies, setCurrentCookies] = useState<string>("");
+
+  // Check for existing cookies on page load
+  useEffect(() => {
+    const checkCookies = () => {
+      const consent = getCookie('cookie-consent');
+      const preferences = getCookie('cookie-preferences');
+      setCurrentCookies(`Consent: ${consent || 'Not set'}, Preferences: ${preferences || 'Not set'}`);
+    };
+
+    checkCookies();
+    // Check cookies every second to show real-time updates
+    const interval = setInterval(checkCookies, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleAcceptAll = () => {
-    console.log("Accept all cookies");
+    setCookie('cookie-consent', 'all');
+    setCookie('cookie-preferences', JSON.stringify({
+      necessary: true,
+      analytics: true,
+      marketing: true,
+      preferences: true
+    }));
+    console.log("All cookies accepted");
   };
 
   const handleAcceptNecessary = () => {
-    console.log("Accept necessary cookies only");
+    setCookie('cookie-consent', 'necessary');
+    setCookie('cookie-preferences', JSON.stringify({
+      necessary: true,
+      analytics: false,
+      marketing: false,
+      preferences: false
+    }));
+    console.log("Only necessary cookies accepted");
   };
 
   const handleSavePreferences = (preferences: {
@@ -23,7 +77,9 @@ export default function CookieConsentPage() {
     marketing: boolean;
     preferences: boolean;
   }) => {
-    console.log("Save preferences:", preferences);
+    setCookie('cookie-consent', 'custom');
+    setCookie('cookie-preferences', JSON.stringify(preferences));
+    console.log("Custom preferences saved:", preferences);
   };
 
   return (
@@ -48,6 +104,16 @@ export default function CookieConsentPage() {
           <div className="bg-white/90 backdrop-blur-sm rounded-lg border border-gray-200/30 p-6 text-center">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Cookie Consent Demo</h3>
             <p className="text-gray-600 mb-4">Click the button below to see the cookie consent dialog in action.</p>
+
+            {/* Current Cookie Status */}
+            <div className="bg-gray-50 rounded-lg p-4 mb-4 text-left">
+              <h4 className="text-sm font-semibold text-gray-900 mb-2">Current Cookie Status:</h4>
+              <p className="text-xs text-gray-600 font-mono break-all">{currentCookies}</p>
+              <p className="text-xs text-gray-500 mt-2">
+                Raw cookies: {typeof window !== 'undefined' ? document.cookie || 'No cookies set' : 'Loading...'}
+              </p>
+            </div>
+
             <button
               onClick={() => setIsDialogOpen(true)}
               className="bg-gray-900 text-white hover:bg-gray-800 font-medium px-6 py-3 rounded-lg transition-colors"

@@ -4,17 +4,43 @@ import { useState } from "react";
 import { Settings } from "lucide-react";
 import { CookieConsentDialog } from "./cookie-consent-dialog";
 
+// Cookie utility functions
+const setCookie = (name: string, value: string, days: number = 365) => {
+  const expires = new Date();
+  expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+
+  // Set cookie with proper attributes for production
+  const cookieString = `${name}=${value}; expires=${expires.toUTCString()}; path=/; SameSite=Lax${
+    window.location.protocol === 'https:' ? '; Secure' : ''
+  }`;
+
+  document.cookie = cookieString;
+  console.log(`Cookie set: ${cookieString}`);
+};
+
 export function CookieSettingsButton() {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleAcceptAll = () => {
-    // Implementation for accepting all cookies
-    console.log("Accept all cookies");
+    setCookie('cookie-consent', 'all');
+    setCookie('cookie-preferences', JSON.stringify({
+      necessary: true,
+      analytics: true,
+      marketing: true,
+      preferences: true
+    }));
+    console.log("All cookies accepted");
   };
 
   const handleAcceptNecessary = () => {
-    // Implementation for accepting only necessary cookies
-    console.log("Accept necessary cookies only");
+    setCookie('cookie-consent', 'necessary');
+    setCookie('cookie-preferences', JSON.stringify({
+      necessary: true,
+      analytics: false,
+      marketing: false,
+      preferences: false
+    }));
+    console.log("Only necessary cookies accepted");
   };
 
   const handleSavePreferences = (preferences: {
@@ -23,8 +49,9 @@ export function CookieSettingsButton() {
     marketing: boolean;
     preferences: boolean;
   }) => {
-    // Implementation for saving custom preferences
-    console.log("Save preferences:", preferences);
+    setCookie('cookie-consent', 'custom');
+    setCookie('cookie-preferences', JSON.stringify(preferences));
+    console.log("Custom preferences saved:", preferences);
   };
 
   return (
