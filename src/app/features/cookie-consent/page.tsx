@@ -1,9 +1,31 @@
+"use client";
+
+import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { CookieConsentDialog } from "./_components/cookie-consent-dialog";
 import { CookieSettingsButton } from "./_components/cookie-settings-button";
 
 export default function CookieConsentPage() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const handleAcceptAll = () => {
+    console.log("Accept all cookies");
+  };
+
+  const handleAcceptNecessary = () => {
+    console.log("Accept necessary cookies only");
+  };
+
+  const handleSavePreferences = (preferences: {
+    necessary: boolean;
+    analytics: boolean;
+    marketing: boolean;
+    preferences: boolean;
+  }) => {
+    console.log("Save preferences:", preferences);
+  };
+
   return (
     <div className="min-h-screen py-6 sm:py-12 px-4">
       <div className="max-w-2xl mx-auto">
@@ -23,7 +45,24 @@ export default function CookieConsentPage() {
 
         {/* Cookie Consent Demo */}
         <div className="mb-6 sm:mb-8">
-          <CookieConsentDialog />
+          <div className="bg-white/90 backdrop-blur-sm rounded-lg border border-gray-200/30 p-6 text-center">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Cookie Consent Demo</h3>
+            <p className="text-gray-600 mb-4">Click the button below to see the cookie consent dialog in action.</p>
+            <button
+              onClick={() => setIsDialogOpen(true)}
+              className="bg-gray-900 text-white hover:bg-gray-800 font-medium px-6 py-3 rounded-lg transition-colors"
+            >
+              Open Cookie Dialog
+            </button>
+          </div>
+
+          <CookieConsentDialog
+            isOpen={isDialogOpen}
+            onClose={() => setIsDialogOpen(false)}
+            onAcceptAll={handleAcceptAll}
+            onAcceptNecessary={handleAcceptNecessary}
+            onSavePreferences={handleSavePreferences}
+          />
         </div>
 
         {/* Skills Info */}

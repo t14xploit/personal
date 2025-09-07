@@ -1,20 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import Cookies from "js-cookie";
-import { Button } from "@/components/ui/button"
-import { Switch } from "@/components/ui/switch"
-import { Label } from "@/components/ui/label"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
+import { useState } from "react"
 import { Cookie, Shield, BarChart3, Target, Settings } from "lucide-react"
 
 interface CookiePreferences {
@@ -24,256 +10,249 @@ interface CookiePreferences {
   preferences: boolean
 }
 
-const defaultPreferences: CookiePreferences = {
-  necessary: true, // Always true
-  analytics: false,
-  marketing: false,
-  preferences: false,
+interface CookieConsentDialogProps {
+  isOpen: boolean
+  onClose: () => void
+  onAcceptAll: () => void
+  onAcceptNecessary: () => void
+  onSavePreferences: (preferences: CookiePreferences) => void
 }
 
-export function CookieConsentDialog() {
-  const [isOpen, setIsOpen] = useState(false)
+export function CookieConsentDialog({
+  isOpen,
+  onClose,
+  onAcceptAll,
+  onAcceptNecessary,
+  onSavePreferences,
+}: CookieConsentDialogProps) {
+  const [preferences, setPreferences] = useState<CookiePreferences>({
+    necessary: true,
+    analytics: false,
+    marketing: false,
+    preferences: false,
+  })
+
   const [showDetails, setShowDetails] = useState(false)
-  const [preferences, setPreferences] = useState<CookiePreferences>(defaultPreferences)
 
-  useEffect(() => {
-    // Check if user has already made a choice
-    const consent = Cookies.get("cookie-consent")
-    if (!consent) {
-      setIsOpen(true)
-    } else {
-      try {
-        const savedPreferences = JSON.parse(consent)
-        setPreferences(savedPreferences)
-      } catch {
-        // If parsing fails, show dialog again
-        setIsOpen(true)
-      }
-    }
-  }, [])
-
-  const savePreferences = (prefs: CookiePreferences) => {
-    // Save to cookie (expires in 1 year)
-    Cookies.set("cookie-consent", JSON.stringify(prefs), { expires: 365 })
-    
-    // Apply preferences (you can add actual analytics/marketing script loading here)
-    if (prefs.analytics) {
-      console.log("Analytics enabled")
-      // Load analytics scripts
-    }
-    
-    if (prefs.marketing) {
-      console.log("Marketing enabled")
-      // Load marketing scripts
-    }
-    
-    if (prefs.preferences) {
-      console.log("Preferences enabled")
-      // Load preference scripts
-    }
-    
-    setIsOpen(false)
+  const handleSavePreferences = () => {
+    onSavePreferences(preferences)
+    onClose()
   }
 
-  const acceptAll = () => {
-    const allAccepted: CookiePreferences = {
-      necessary: true,
-      analytics: true,
-      marketing: true,
-      preferences: true,
-    }
-    savePreferences(allAccepted)
+  const handleAcceptAll = () => {
+    onAcceptAll()
+    onClose()
   }
 
-  const acceptNecessary = () => {
-    savePreferences(defaultPreferences)
-  }
-
-  const saveCustomPreferences = () => {
-    savePreferences(preferences)
+  const handleAcceptNecessary = () => {
+    onAcceptNecessary()
+    onClose()
   }
 
   const updatePreference = (key: keyof CookiePreferences, value: boolean) => {
-    if (key === "necessary") return // Can't disable necessary cookies
     setPreferences(prev => ({ ...prev, [key]: value }))
   }
 
   if (!isOpen) return null
 
   return (
-    <Dialog open={isOpen} onOpenChange={() => {}}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-white border border-gray-200 text-gray-900 rounded-lg shadow-lg [&>*]:!bg-white [&>*]:!text-gray-900 [&>*]:!border-gray-200">
-        <DialogHeader>
-          <DialogTitle className="flex items-center gap-2 text-gray-900">
-            <Cookie className="h-5 w-5" />
-            Cookie Settings
-          </DialogTitle>
-          <DialogDescription className="text-gray-600">
-            We use cookies to enhance your browsing experience and analyze our traffic.
-            Choose which types of cookies you want to accept.
-          </DialogDescription>
-        </DialogHeader>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
+      <div className="w-full max-w-2xl bg-white rounded-lg shadow-xl border border-gray-200 max-h-[90vh] overflow-hidden">
+        {/* Header */}
+        <div className="flex items-center justify-between p-6 border-b border-gray-200">
+          <div className="flex items-center gap-2">
+            <Cookie className="h-5 w-5 text-gray-700" />
+            <h2 className="text-xl font-semibold text-gray-900">Cookie Settings</h2>
+          </div>
+          <button
+            onClick={onClose}
+            className="text-gray-400 hover:text-gray-600 transition-colors"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
 
-        <div className="space-y-6">
+        {/* Content */}
+        <div className="p-6 max-h-[70vh] overflow-y-auto">
+          <p className="text-gray-600 mb-6">
+            We use cookies to enhance your browsing experience and analyze our traffic. 
+            Choose which types of cookies you want to accept.
+          </p>
+
           {!showDetails ? (
-            // Simple view
             <div className="space-y-4">
               <p className="text-sm text-gray-700 leading-relaxed">
-                We respect your privacy. You can choose to accept all cookies,
+                We respect your privacy. You can choose to accept all cookies, 
                 only necessary cookies, or customize your settings.
               </p>
-
+              
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button onClick={acceptAll} className="flex-1 bg-gray-900 text-white hover:bg-gray-800 font-medium">
+                <button 
+                  onClick={handleAcceptAll} 
+                  className="flex-1 bg-gray-900 text-white hover:bg-gray-800 font-medium px-4 py-2 rounded-lg transition-colors"
+                >
                   Accept All Cookies
-                </Button>
-                <Button onClick={acceptNecessary} variant="outline" className="flex-1 border-gray-300 text-gray-700 hover:bg-gray-50 font-medium">
+                </button>
+                <button 
+                  onClick={handleAcceptNecessary} 
+                  className="flex-1 border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium px-4 py-2 rounded-lg transition-colors"
+                >
                   Necessary Only
-                </Button>
-                <Button
+                </button>
+                <button
                   onClick={() => setShowDetails(true)}
-                  variant="outline"
-                  className="flex-1 border-gray-300 text-gray-700 hover:bg-gray-50 font-medium"
+                  className="flex-1 border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium px-4 py-2 rounded-lg transition-colors flex items-center justify-center"
                 >
                   <Settings className="h-4 w-4 mr-2" />
                   Customize Settings
-                </Button>
+                </button>
               </div>
             </div>
           ) : (
-            // Detailed view
-            <div className="space-y-4">
+            <div className="space-y-6">
               <div className="grid gap-4">
                 {/* Necessary Cookies */}
-                <Card className="bg-white border border-gray-200">
-                  <CardHeader className="pb-3">
-                    <CardTitle className="flex items-center gap-2 text-base text-gray-900 font-semibold">
-                      <Shield className="h-4 w-4" />
-                      Necessary Cookies
-                    </CardTitle>
-                    <CardDescription className="text-gray-600">
+                <div className="bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <div className="p-4 border-b border-gray-100">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Shield className="h-4 w-4 text-gray-700" />
+                      <h3 className="text-base font-semibold text-gray-900">Necessary Cookies</h3>
+                    </div>
+                    <p className="text-sm text-gray-600">
                       These cookies are required for the website to function properly
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
+                    </p>
+                  </div>
+                  <div className="p-4">
                     <div className="flex items-center justify-between">
-                      <Label htmlFor="necessary" className="text-sm text-gray-700">
+                      <label htmlFor="necessary" className="text-sm text-gray-700">
                         Always enabled
-                      </Label>
-                      <Switch
+                      </label>
+                      <input
+                        type="checkbox"
                         id="necessary"
                         checked={true}
                         disabled
-                        className="data-[state=checked]:bg-gray-900"
+                        className="w-4 h-4 text-gray-900 bg-gray-200 border-gray-300 rounded focus:ring-gray-500 focus:ring-2"
                       />
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
 
                 {/* Analytics Cookies */}
-                <Card className="bg-white border border-gray-200">
-                  <CardHeader className="pb-3">
-                    <CardTitle className="flex items-center gap-2 text-base text-gray-900 font-semibold">
-                      <BarChart3 className="h-4 w-4" />
-                      Analytics Cookies
-                    </CardTitle>
-                    <CardDescription className="text-gray-600">
+                <div className="bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <div className="p-4 border-b border-gray-100">
+                    <div className="flex items-center gap-2 mb-2">
+                      <BarChart3 className="h-4 w-4 text-gray-700" />
+                      <h3 className="text-base font-semibold text-gray-900">Analytics Cookies</h3>
+                    </div>
+                    <p className="text-sm text-gray-600">
                       Help us understand how visitors interact with our website
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
+                    </p>
+                  </div>
+                  <div className="p-4">
                     <div className="flex items-center justify-between">
-                      <Label htmlFor="analytics" className="text-sm text-gray-700">
+                      <label htmlFor="analytics" className="text-sm text-gray-700">
                         Allow analytics cookies
-                      </Label>
-                      <Switch
+                      </label>
+                      <input
+                        type="checkbox"
                         id="analytics"
                         checked={preferences.analytics}
-                        onCheckedChange={(checked) => updatePreference("analytics", checked)}
-                        className="data-[state=checked]:bg-gray-900"
+                        onChange={(e) => updatePreference("analytics", e.target.checked)}
+                        className="w-4 h-4 text-gray-900 bg-gray-100 border-gray-300 rounded focus:ring-gray-500 focus:ring-2"
                       />
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
 
                 {/* Marketing Cookies */}
-                <Card className="bg-white border border-gray-200">
-                  <CardHeader className="pb-3">
-                    <CardTitle className="flex items-center gap-2 text-base text-gray-900 font-semibold">
-                      <Target className="h-4 w-4" />
-                      Marketing Cookies
-                    </CardTitle>
-                    <CardDescription className="text-gray-600">
+                <div className="bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <div className="p-4 border-b border-gray-100">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Target className="h-4 w-4 text-gray-700" />
+                      <h3 className="text-base font-semibold text-gray-900">Marketing Cookies</h3>
+                    </div>
+                    <p className="text-sm text-gray-600">
                       Used to deliver personalized advertisements and measure campaign effectiveness
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
+                    </p>
+                  </div>
+                  <div className="p-4">
                     <div className="flex items-center justify-between">
-                      <Label htmlFor="marketing" className="text-sm text-gray-700">
+                      <label htmlFor="marketing" className="text-sm text-gray-700">
                         Allow marketing cookies
-                      </Label>
-                      <Switch
+                      </label>
+                      <input
+                        type="checkbox"
                         id="marketing"
                         checked={preferences.marketing}
-                        onCheckedChange={(checked) => updatePreference("marketing", checked)}
-                        className="data-[state=checked]:bg-gray-900"
+                        onChange={(e) => updatePreference("marketing", e.target.checked)}
+                        className="w-4 h-4 text-gray-900 bg-gray-100 border-gray-300 rounded focus:ring-gray-500 focus:ring-2"
                       />
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
 
                 {/* Preference Cookies */}
-                <Card className="bg-white border border-gray-200">
-                  <CardHeader className="pb-3">
-                    <CardTitle className="flex items-center gap-2 text-base text-gray-900 font-semibold">
-                      <Settings className="h-4 w-4" />
-                      Preference Cookies
-                    </CardTitle>
-                    <CardDescription className="text-gray-600">
+                <div className="bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <div className="p-4 border-b border-gray-100">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Settings className="h-4 w-4 text-gray-700" />
+                      <h3 className="text-base font-semibold text-gray-900">Preference Cookies</h3>
+                    </div>
+                    <p className="text-sm text-gray-600">
                       Remember your preferences and settings
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
+                    </p>
+                  </div>
+                  <div className="p-4">
                     <div className="flex items-center justify-between">
-                      <Label htmlFor="preferences" className="text-sm text-gray-700">
+                      <label htmlFor="preferences" className="text-sm text-gray-700">
                         Allow preference cookies
-                      </Label>
-                      <Switch
+                      </label>
+                      <input
+                        type="checkbox"
                         id="preferences"
                         checked={preferences.preferences}
-                        onCheckedChange={(checked) => updatePreference("preferences", checked)}
-                        className="data-[state=checked]:bg-gray-900"
+                        onChange={(e) => updatePreference("preferences", e.target.checked)}
+                        className="w-4 h-4 text-gray-900 bg-gray-100 border-gray-300 rounded focus:ring-gray-500 focus:ring-2"
                       />
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </div>
 
-              <Separator />
-
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button onClick={saveCustomPreferences} className="flex-1 bg-gray-900 text-white hover:bg-gray-800 font-medium">
+                <button 
+                  onClick={handleSavePreferences} 
+                  className="flex-1 bg-gray-900 text-white hover:bg-gray-800 font-medium px-4 py-2 rounded-lg transition-colors"
+                >
                   Save My Settings
-                </Button>
-                <Button onClick={acceptAll} variant="outline" className="flex-1 border-gray-300 text-gray-700 hover:bg-gray-50 font-medium">
+                </button>
+                <button 
+                  onClick={handleAcceptAll} 
+                  className="flex-1 border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium px-4 py-2 rounded-lg transition-colors"
+                >
                   Accept All Cookies
-                </Button>
-                <Button
+                </button>
+                <button
                   onClick={() => setShowDetails(false)}
-                  variant="outline"
-                  className="flex-1 border-gray-300 text-gray-700 hover:bg-gray-50 font-medium"
+                  className="flex-1 border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium px-4 py-2 rounded-lg transition-colors"
                 >
                   Back to Simple View
-                </Button>
+                </button>
               </div>
             </div>
           )}
         </div>
 
-        <DialogFooter className="text-xs text-gray-500">
-          You can change your cookie settings at any time in the footer.
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+        {/* Footer */}
+        <div className="p-6 border-t border-gray-200">
+          <p className="text-xs text-gray-500">
+            You can change your cookie settings at any time in the footer.
+          </p>
+        </div>
+      </div>
+    </div>
   )
 }
