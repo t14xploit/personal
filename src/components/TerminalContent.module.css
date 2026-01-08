@@ -27,7 +27,7 @@
   /* Force override Augmented UI border variables */
   --aug-border-opacity: 0.05 !important;
   --aug-border-all: 1px !important;
-  --aug-border-bg: #0f1f24 !important;
+  --aug-border-bg: #0f2416 !important;
 
   background: var(--aug-primary-bg) !important;
   color: var(--aug-primary-color) !important;
@@ -35,12 +35,12 @@
   max-width: 100vw !important;
   margin: auto !important;
   min-height: 500px !important;
-  border: 1px solid #0f1f24 !important;
+  border: 1px solid #0f2416 !important;
   border-radius: 2px !important;
   box-shadow:
-    0 0 20px rgba(0, 240, 255, 0.1),
-    0 0 40px rgba(0, 240, 255, 0.05),
-    inset 0 0 20px rgba(0, 240, 255, 0.02) !important;
+    0 0 20px rgba(0, 255, 106, 0.1),
+    0 0 40px rgba(0, 255, 110, 0.05),
+    inset 0 0 20px rgba(0, 255, 102, 0.02) !important;
   overflow: hidden !important;
   display: flex !important;
   flex-direction: column !important;
@@ -53,23 +53,23 @@
 .terminalContainer[data-augmented-ui] {
   border: 1px solid #0f1f24 !important;
   box-shadow:
-    0 0 20px rgba(0, 240, 255, 0.1),
-    0 0 40px rgba(0, 240, 255, 0.05),
-    inset 0 0 20px rgba(0, 240, 255, 0.02) !important;
+    0 0 20px rgba(0, 255, 94, 0.1),
+    0 0 40px rgba(0, 255, 102, 0.05),
+    inset 0 0 20px rgba(0, 255, 89, 0.02) !important;
 }
 
 @keyframes terminalGlow {
   0% {
     box-shadow:
-      0 0 20px rgba(0, 240, 255, 0.1),
-      0 0 40px rgba(0, 240, 255, 0.05),
-      inset 0 0 20px rgba(0, 240, 255, 0.02);
+      0 0 20px rgba(0, 255, 123, 0.1),
+      0 0 40px rgba(0, 255, 106, 0.05),
+      inset 0 0 20px rgba(0, 255, 76, 0.02);
   }
   100% {
     box-shadow:
-      0 0 25px rgba(0, 240, 255, 0.15),
-      0 0 50px rgba(0, 240, 255, 0.08),
-      inset 0 0 25px rgba(0, 240, 255, 0.03);
+      0 0 25px rgba(0, 255, 94, 0.15),
+      0 0 50px rgba(0, 255, 102, 0.08),
+      inset 0 0 25px rgba(0, 255, 102, 0.03);
   }
 }
 
@@ -82,9 +82,9 @@
   height: 1px;
   background: linear-gradient(90deg,
     transparent 0%,
-    rgba(0, 240, 255, 0.3) 20%,
-    rgba(0, 240, 255, 0.6) 50%,
-    rgba(0, 240, 255, 0.3) 80%,
+    rgba(0, 255, 85, 0.3) 20%,
+    rgba(0, 255, 106, 0.6) 50%,
+    rgba(0, 255, 106, 0.3) 80%,
     transparent 100%);
   animation: scanLine 3s linear infinite;
 }
@@ -110,7 +110,7 @@
   align-items: center;
   padding: 0.5rem 1rem;
   background-color: #031421;
-  border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+  border-bottom: 1px solid rgba(0, 255, 72, 0.1);
 }
 
 /* ===== RESPONSIVE BREAKPOINTS ===== */

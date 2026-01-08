@@ -70,46 +70,59 @@ export default function TerminalContent() {
     }
   }, [charIndex, lineIndex, skip]);
 
-  return (
-    <section
-      className={styles.terminalContainer}
-      data-augmented-ui="tl-clip br-clip both"
-      onClick={() => setSkip(true)}
-    >
-      {/* Top Bar */}
-      <div className={styles.topBar}>
-        <div className={`${styles.dot} ${styles.red}`} />
-        <div className={`${styles.dot} ${styles.yellow}`} />
-        <div className={`${styles.dot} ${styles.green}`} />
-        <span className={styles.title}>T14Xploit Terminal</span>
-      </div>
+ return (
+  <section
+    className={styles.terminalContainer}
+    data-augmented-ui="tl-clip br-clip both"
+    onClick={() => setSkip(true)}
+  >
+    {/* Top Bar */}
+    <div className={styles.topBar}>
+      <div className={`${styles.dot} ${styles.red}`} />
+      <div className={`${styles.dot} ${styles.yellow}`} />
+      <div className={`${styles.dot} ${styles.green}`} />
+      <span className={styles.title}>T14Xploit Terminal</span>
+    </div>
 
-      {/* Terminal Content */}
-      <div className={styles.terminalContent}>
-        {displayedLines.map((line, idx) => (
-  <p key={idx}>
-    {line.prompt && <span className="text-[#00ffcc]">guest@T14Xploit:~$ </span>}
+    {/* Terminal Content */}
+    <div className={styles.terminalContent}>
+      {displayedLines.map((line, idx) => (
+       <p key={idx} className="whitespace-pre-wrap">
+  {/* Terminal prompt */}
+  {line.prompt && (
+    <span style={{ color: 'var(--primary)' }}>
+      guest@T14Xploit:~${' '}
+    </span>
+  )}
 
-    {line.label ? (
-      <>
-        <span className="text-[#ff4d4d] font-semibold">{line.label}:</span>{' '}
-        <span className="text-[#00ff00]">{line.value}</span>
-      </>
-    ) : (
-      <span className="text-[#00ffff]">{line.text}</span>
-    )}
-  </p>
-))}
+  {/* Label + Value (skills lines) */}
+  {line.label ? (
+    <>
+      <span style={{ color: 'var(--destructive)', fontWeight: 600 }}>
+        {line.label}:
+      </span>{' '}
+      <span style={{ color: 'var(--accent)' }}>{line.value}</span>
+    </>
+  ) : (
+    <span style={{ color: 'var(--foreground-muted)' }}>{line.text}</span>
+  )}
+</p>
 
+      ))}
 
-        {lineIndex < lines.length && (
-          <p>
-            {lines[lineIndex].prompt && <span className="text-[#00ffcc]">guest@T14Xploit:~$ </span>}
-            <span className="text-[#00ffff]">{currentLine}</span>
-            <span className={styles.blink}>|</span>
-          </p>
-        )}
-      </div>
-    </section>
-  );
+      {/* Current typing line */}
+      {lineIndex < lines.length && (
+        <p className="whitespace-pre-wrap">
+          {lines[lineIndex].prompt && (
+            <span style={{ color: 'var(--accent)' }}>
+              guest@T14Xploit:~${' '}
+            </span>
+          )}
+          <span style={{ color: 'var(--foreground)' }}>{currentLine}</span>
+          <span className={styles.blink}>|</span>
+        </p>
+      )}
+    </div>
+  </section>
+);
 }
