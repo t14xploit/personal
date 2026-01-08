@@ -18,7 +18,7 @@ import { BsMenuButtonWideFill } from "react-icons/bs";
     { title: "Home", url: "/" },
     { title: "About", url: "/about" },
     { title: "Projects", url: "/projects" },
-    { title: "Blog", url: "/blog" },
+    { title: "Notes", url: "/notes" },
     { title: "Contact", url: "/contact" },
     
   ];
