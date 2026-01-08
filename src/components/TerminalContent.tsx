@@ -6,7 +6,9 @@ import '@/styles/augmented-ui.css';
 
 type TerminalLine = {
   prompt: boolean;
-  text: string;
+  text?: string;
+  label?: string;
+  value?: string;
 };
 
 const lines: TerminalLine[] = [
@@ -21,7 +23,6 @@ const lines: TerminalLine[] = [
   { prompt: false, label: 'Security', value: 'Penetration testing, Vulnerability Assessment, IAM, Cyber Hygiene' },
   { prompt: false, label: 'Cloud', value: 'AWS, Cloud Security, Infrastructure as Code' },
   { prompt: false, label: 'Tools', value: 'Git, VSCode, Monitoring/Logging, Automation Scripts' },
-
   { prompt: false, text: '' },
   { prompt: true, text: 'cat lab-log.txt' },
   { prompt: false, text: '• Automated data pipelines and system monitoring scripts' },
@@ -50,7 +51,7 @@ export default function TerminalContent() {
 
     if (lineIndex >= lines.length) return;
 
-    const fullText = lines[lineIndex].text;
+    const fullText = lines[lineIndex].text ?? '';
 
     if (charIndex < fullText.length) {
       const charTimeout = setTimeout(() => {
