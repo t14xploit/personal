@@ -1,7 +1,8 @@
 'use client';
+
 import React, { useEffect, useState } from 'react';
-import styles from './TerminalContent.module.css'; 
-import '@/styles/augmented-ui.css'; 
+import styles from './TerminalContent.module.css';
+import '@/styles/augmented-ui.css';
 
 type TerminalLine = {
   prompt: boolean;
@@ -11,47 +12,52 @@ type TerminalLine = {
 const lines: TerminalLine[] = [
   { prompt: true, text: 'cat about.txt' },
   { prompt: false, text: '' },
-  { prompt: false, text: 'Hi! I\'m a passionate full-stack developer who loves building' },
-  { prompt: false, text: 'modern web applications with clean, efficient code.' },
+  { prompt: false, text: "Technical problem solver working at the intersection of data, IT, and cybersecurity." },
+  { prompt: false, text: "Designing automated monitoring systems, analyzing complex datasets, and securing infrastructures." },
   { prompt: false, text: '' },
-  { prompt: false, text: 'Currently focused on:' },
-  { prompt: false, text: '• Creating intuitive user experiences' },
-  { prompt: false, text: '• Building scalable web applications' },
-  { prompt: false, text: '• Learning new technologies and frameworks' },
+  { prompt: true, text: 'ls skills/' },
+  { prompt: false, text: 'Data:        Python, Pandas, SQL, Matplotlib, Jupyter' },
+  { prompt: false, text: 'Systems:     Linux, Windows, Networking, Bash/CLI, Docker' },
+  { prompt: false, text: 'Security:    Penetration testing, Vulnerability assessment, Cyber hygiene, IAM' },
+  { prompt: false, text: 'Cloud:       AWS, Cloud Security, Infrastructure as Code' },
+  { prompt: false, text: 'Tools:       Git, VSCode, Monitoring/Logging, Automation scripts' },
   { prompt: false, text: '' },
-  { prompt: true, text: 'ls -la skills/' },
-  { prompt: false, text: 'Frontend:     React, Next.js, TypeScript, Tailwind CSS' },
-  { prompt: false, text: 'Backend:      Node.js, Prisma, PostgreSQL, Better-Auth' },
-  { prompt: false, text: 'Tools:        Git, Linux, Docker, Vite' },
-  { prompt: false, text: 'Learning:     ASP.NET, Socket.io, Advanced React patterns' },
+  { prompt: true, text: 'cat lab-log.txt' },
+  { prompt: false, text: '• Automated data pipeline extracting insights from multiple sources' },
+  { prompt: false, text: '• Deployed Linux server with monitoring and alerting scripts' },
+  { prompt: false, text: '• Tested application security using penetration testing frameworks' },
+  { prompt: false, text: '• Built scripts to automate system maintenance tasks' },
   { prompt: false, text: '' },
-  { prompt: true, text: 'cat projects.md | head -4' },
-  { prompt: false, text: '1. TinyTalker - Speech development tracker for children' },
-  { prompt: false, text: '2. Pamadorka - Cyberpunk-themed productivity timer' },
-  { prompt: false, text: '3. News Platform - Collaborative news website with admin dashboard' },
-  { prompt: false, text: '4. Weather App - Modern weather app with dynamic design' },
-  { prompt: false, text: '' },
-  { prompt: true, text: 'echo "Let\'s build something amazing together!"' },
-  { prompt: false, text: 'Let\'s build something amazing together!' },
+  { prompt: true, text: 'echo "Continuous improvement and applied practice."' },
+  { prompt: false, text: 'Continuous improvement and applied practice.' },
   { prompt: false, text: '' },
   { prompt: true, text: '_' }
 ];
 
+
+
 export default function TerminalContent() {
-  const [displayedLines, setDisplayedLines] = useState<TerminalLine[]>([]); // Display lines
-  const [currentLine, setCurrentLine] = useState(''); // Current line being typed
-  const [lineIndex, setLineIndex] = useState(0); // Track line index
-  const [charIndex, setCharIndex] = useState(0); // Track character index
+  const [displayedLines, setDisplayedLines] = useState<TerminalLine[]>([]);
+  const [currentLine, setCurrentLine] = useState('');
+  const [lineIndex, setLineIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [skip, setSkip] = useState(false);
 
   useEffect(() => {
-    if (lineIndex >= lines.length) return; // Stop if no more lines
+    if (skip) {
+      setDisplayedLines(lines);
+      setCurrentLine('');
+      return;
+    }
+
+    if (lineIndex >= lines.length) return;
 
     const fullText = lines[lineIndex].text;
     if (charIndex < fullText.length) {
       const timeout = setTimeout(() => {
         setCurrentLine((prev) => prev + fullText[charIndex]);
         setCharIndex((prev) => prev + 1);
-      }, 30); // Typing speed
+      }, 5); // faster typing speed
       return () => clearTimeout(timeout);
     } else {
       const timeout = setTimeout(() => {
@@ -59,22 +65,26 @@ export default function TerminalContent() {
         setCurrentLine('');
         setCharIndex(0);
         setLineIndex((prev) => prev + 1);
-      }, 300); // Delay before moving to next line
+      }, 50); // faster line delay
       return () => clearTimeout(timeout);
     }
-  }, [charIndex, lineIndex]);
+  }, [charIndex, lineIndex, skip]);
 
   return (
-<section className={styles.terminalContainer} data-augmented-ui="tl-clip  br-clip both">
-{/* Terminal Top Bar */}
+    <section
+      className={styles.terminalContainer}
+      data-augmented-ui="tl-clip br-clip both"
+      onClick={() => setSkip(true)} // click to skip
+    >
+      {/* Top Bar */}
       <div className={styles.topBar}>
-        <div className={`${styles.dot} ${styles.red}`}></div>
-        <div className={`${styles.dot} ${styles.yellow}`}></div>
-        <div className={`${styles.dot} ${styles.green}`}></div>
+        <div className={`${styles.dot} ${styles.red}`} />
+        <div className={`${styles.dot} ${styles.yellow}`} />
+        <div className={`${styles.dot} ${styles.green}`} />
         <span className={styles.title}>T14Xploit Terminal</span>
       </div>
 
-      {/* Terminal Content (Lines of text) */}
+      {/* Terminal Content */}
       <div className={styles.terminalContent}>
         {displayedLines.map((line, idx) => (
           <p key={idx}>
@@ -83,12 +93,11 @@ export default function TerminalContent() {
           </p>
         ))}
 
-        {/* Current typing line with cursor */}
         {lineIndex < lines.length && (
           <p>
             {lines[lineIndex].prompt && <span className="text-[#00ffcc]">guest@T14Xploit:~$ </span>}
             <span className="text-[#00ffff]">{currentLine}</span>
-            <span className={styles.blink}>|</span> {/* Cursor */}
+            <span className={styles.blink}>|</span>
           </p>
         )}
       </div>
