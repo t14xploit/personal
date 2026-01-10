@@ -1,42 +1,57 @@
 .container {
-  color: #00ffcc;
+  color: var(--foreground);          /* main text */
   padding: 2rem;
   white-space: pre-wrap;
   font-weight: lighter;
+  font-family: var(--font-mono);
 }
 
 .intro {
   margin-bottom: 2rem;
-  color: #00ffaa;
+  color: var(--foreground-muted);     /* softer green for intro typewriter */
   line-height: 1.6;
 }
 
 .logEntry {
   margin-bottom: 2rem;
+  border-left: 2px solid rgba(0, 255, 119, 0.3); /* subtle neon accent */
+  padding-left: 1rem;
 }
 
 .date {
-  color: #00ffff;
+  color: var(--accent);              /* neon accent for dates */
+  font-weight: 600;
   margin-bottom: 0.25rem;
 }
 
 .title {
-  color: #00ddff;
+  color: var(--foreground);          /* bright text for titles */
+  font-weight: bold;
   margin-bottom: 0.5rem;
 }
 
 .item {
   margin-left: 1rem;
   margin-bottom: 0.25rem;
+  color: var(--foreground-muted);
 }
 
 .label {
-  color: #ffaa00;
+  color: var(--destructive);         /* reddish labels */
+  font-weight: 600;
 }
 
 .thoughts {
   margin-left: 1rem;
-  color: #ffffffcc;
+  color: var(--foreground-muted);
   margin-top: 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
+/* Optional: hover effect for log entries */
+.logEntry:hover {
+  background-color: rgba(0, 255, 119, 0.05);
+  box-shadow: 0 0 10px rgba(0, 255, 119, 0.2);
+  transition: all 0.3s ease;
+}
